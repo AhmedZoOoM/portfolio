@@ -1,0 +1,840 @@
+{
+  "scannedAt": "2026-08-08T00:00:00.000Z",
+  "sourceFolderUrl": "https://drive.google.com/drive/folders/1M-fwHszneqa2h0xoZhImtVKoBZdmAMP9",
+  "folderCounts": {
+    "root": 13,
+    "Automatest": 8,
+    "8Dominos": 9,
+    "8Dominos_Reels": 19,
+    "Nahark Eswed Reels": 14,
+    "ADIB EGYPT REELS": 6,
+    "Enty Asl El Hekaya": 4,
+    "The Shock": 5,
+    "Instagram Reels": 3
+  },
+  "media": [
+    {
+      "driveId": "1XahedVA2AfhI9dL71OwIQHLwB541uw2P",
+      "sourcePath": "Drive root/CIB PARTY.mp4",
+      "originalTitle": "CIB PARTY.mp4",
+      "mimeType": "video/mp4",
+      "size": 20830784,
+      "modifiedTime": "2025-10-08T15:45:23.612Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1Gi0vvuqKsfuLoXOs5pGKdud3Vsjjg09H",
+      "sourcePath": "Drive root/مبادرة سائق واع لطريق آمن - الشركة القابضة للنقل البحري والبري (1080p, h264).mp4",
+      "originalTitle": "مبادرة سائق واع لطريق آمن - الشركة القابضة للنقل البحري والبري (1080p, h264).mp4",
+      "mimeType": "video/mp4",
+      "size": 46966324,
+      "modifiedTime": "2025-10-08T15:44:43.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1QuwhZeMIujn7IA9mUAKesgK9XYGYl6Me",
+      "sourcePath": "Drive root/BTS_ADIB.mp4",
+      "originalTitle": "BTS_ADIB.mp4",
+      "mimeType": "video/mp4",
+      "size": 310062295,
+      "modifiedTime": "2025-03-11T18:04:34.168Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1mdSSSoBcsVBeXds9XSb6PcSySx85xmHu",
+      "sourcePath": "Drive root/Yasmine Atef_Art Director Showreel.mp4",
+      "originalTitle": "Yasmine Atef_Art Director Showreel.mp4",
+      "mimeType": "video/mp4",
+      "size": 239453169,
+      "modifiedTime": "2024-06-30T02:05:56.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1G9TkkOLqVmIpe5z2soskOUwkYy2XNy9e",
+      "sourcePath": "Drive root/Youssef Baroud- DOP Showreel.mp4",
+      "originalTitle": "Youssef Baroud- DOP Showreel.mp4",
+      "mimeType": "video/mp4",
+      "size": 45088393,
+      "modifiedTime": "2024-03-13T14:15:42.699Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1b1M5rGf5GDWsa_ZJoUV5Bu5xq2-oRYZz",
+      "sourcePath": "Drive root/Al Plateau Promo 01 - The Mummyالبرومو الثانى لبرنامج البلاتوه مع احمد امين  المومياء.mp4",
+      "originalTitle": "Al Plateau Promo 01 - The Mummyالبرومو الثانى لبرنامج البلاتوه مع احمد امين  المومياء.mp4",
+      "mimeType": "video/mp4",
+      "size": 94089119,
+      "modifiedTime": "2024-03-13T08:20:36.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1UYUhj6zwbKfDHJeTUfFewKuG9pPHz1Op",
+      "sourcePath": "Drive root/EVA26SEC.mp4",
+      "originalTitle": "EVA26SEC.mp4",
+      "mimeType": "video/mp4",
+      "size": 37148627,
+      "modifiedTime": "2024-03-13T08:16:37.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "18YVkMN7yL8bSKhTKzCAQVmbF2KthT_2m",
+      "sourcePath": "Drive root/Al Plateau Promo 01 - Al Koffar  البرومو الأول لبرنامج البلاتوه مع أحمد أمين - الكفار.mp4",
+      "originalTitle": "Al Plateau Promo 01 - Al Koffar  البرومو الأول لبرنامج البلاتوه مع أحمد أمين - الكفار.mp4",
+      "mimeType": "video/mp4",
+      "size": 111503090,
+      "modifiedTime": "2024-03-13T08:13:13.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1ATtx_waJsppDwkRpFIIwswTx23DIpLFN",
+      "sourcePath": "Drive root/Feras Zayn Producer's Showreel.mp4",
+      "originalTitle": "Feras Zayn Producer's Showreel.mp4",
+      "mimeType": "video/mp4",
+      "size": 39750332,
+      "modifiedTime": "2023-01-28T21:19:32.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1l1fp1vS7Cof5HksJ43ITiVb7r8Mv2A8h",
+      "sourcePath": "Drive root/Almarai The Making of.mp4",
+      "originalTitle": "Almarai The Making of.mp4",
+      "mimeType": "video/mp4",
+      "size": 12644666,
+      "modifiedTime": "2023-01-05T16:49:33.227Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1Cz1J0y9WeeBCiWTF-rMeTK_GbPfrz8SN",
+      "sourcePath": "Drive root/The Fisherman_Final.mp4",
+      "originalTitle": "The Fisherman_Final.mp4",
+      "mimeType": "video/mp4",
+      "size": 18503669,
+      "modifiedTime": "2020-07-07T20:52:14.032Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1-c4zI1ed1SyZPT17siB0VBM5e7VmC1M_",
+      "sourcePath": "Drive root/Halwani Bros.mp4",
+      "originalTitle": "Halwani Bros.mp4",
+      "mimeType": "video/mp4",
+      "size": 30009036,
+      "modifiedTime": "2019-08-21T11:12:09.201Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1-bsU5PpCL_BExaZ_5UVrHau4Nv_mW2GE",
+      "sourcePath": "Drive root/MORO.mp4",
+      "originalTitle": "MORO.mp4",
+      "mimeType": "video/mp4",
+      "size": 516519,
+      "modifiedTime": "2019-08-20T19:40:15.910Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1fkTaFyGEjbjT2OOVhy_6r9MV3sMMDqrR",
+      "sourcePath": "Automatest/AI in the different stages of Testing.mp4",
+      "originalTitle": "AI in the different stages of Testing.mp4",
+      "mimeType": "video/mp4",
+      "size": 3337353348,
+      "modifiedTime": "2026-07-14T16:10:12.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1tawIBasEJNMJLQIa8meny1xO-Tyz8NeD",
+      "sourcePath": "Automatest/AI in the different stages of Testing.png",
+      "originalTitle": "AI in the different stages of Testing.png",
+      "mimeType": "image/png",
+      "size": 2264973,
+      "modifiedTime": "2026-07-14T15:23:10.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1OV0Tn1SW6SRAfyZlnRNGlMhHwKDzQPuU",
+      "sourcePath": "Automatest/Comparing Agentic AI Providers Today.mp4",
+      "originalTitle": "Comparing Agentic AI Providers Today.mp4",
+      "mimeType": "video/mp4",
+      "size": 2503870409,
+      "modifiedTime": "2026-07-14T13:23:37.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1d9UemDIMuT4ewHYmaRiVaFTn_AqOzdNj",
+      "sourcePath": "Automatest/Comparing Agentic AI Providers Today.png",
+      "originalTitle": "Comparing Agentic AI Providers Today.png",
+      "mimeType": "image/png",
+      "size": 2224039,
+      "modifiedTime": "2026-07-14T12:50:00.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1rGWZe3YszCd6ONJHPjKKcq0h3XJLhhSJ",
+      "sourcePath": "Automatest/Upgrading from Native to SHAFT.mp4",
+      "originalTitle": "Upgrading from Native to SHAFT.mp4",
+      "mimeType": "video/mp4",
+      "size": 2826670192,
+      "modifiedTime": "2026-06-24T10:30:36.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "15iKdRxoCwJHvRj33LdOhjrq28F4bTNQD",
+      "sourcePath": "Automatest/Upgrading from Native to SHAFT.png",
+      "originalTitle": "Upgrading from Native to SHAFT.png",
+      "mimeType": "image/png",
+      "size": 2112858,
+      "modifiedTime": "2026-06-24T08:54:06.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1eWqfzn0aoVnf5jaFN8TM-lVEgsNAiWdy",
+      "sourcePath": "Automatest/How To Use Shaft Engine.mp4",
+      "originalTitle": "How To Use Shaft Engine.mp4",
+      "mimeType": "video/mp4",
+      "size": 668654802,
+      "modifiedTime": "2026-06-23T13:08:46.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "14u5al-eUXe2-gFKEBA6A-cE16s6jF_S3",
+      "sourcePath": "Automatest/How To Use Shaft Engine.png",
+      "originalTitle": "How To Use Shaft Engine.png",
+      "mimeType": "image/png",
+      "size": 2034387,
+      "modifiedTime": "2026-06-23T12:52:17.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1UeE0bPFDZCmEHz21MBE9fClbU7UpSm9q",
+      "sourcePath": "8Dominos/Comparison Trap.mp4",
+      "originalTitle": "Comparison Trap.mp4",
+      "mimeType": "video/mp4",
+      "size": 664855135,
+      "modifiedTime": "2026-06-27T14:21:35.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1212EYYU6YOuGNxExp5CSWz-aO__QxQPA",
+      "sourcePath": "8Dominos/The Habbit You've been meaning to quit.mp4",
+      "originalTitle": "The Habbit You've been meaning to quit.mp4",
+      "mimeType": "video/mp4",
+      "size": 819446409,
+      "modifiedTime": "2026-06-27T14:14:17.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1ybVqPl7bmr6odOZC-em2ufvRRduXldgR",
+      "sourcePath": "8Dominos/Your Marriage Isn't a Business.mp4",
+      "originalTitle": "Your Marriage Isn't a Business.mp4",
+      "mimeType": "video/mp4",
+      "size": 1037821626,
+      "modifiedTime": "2026-06-27T14:10:32.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1_664B7ud9xgY1y9RlcklgiZhxLPgMROu",
+      "sourcePath": "8Dominos/No One is Coming To Save You.mp4",
+      "originalTitle": "No One is Coming To Save You.mp4",
+      "mimeType": "video/mp4",
+      "size": 881054702,
+      "modifiedTime": "2026-06-26T15:21:27.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "18UHCdDM8SBhZpBns-zr9o04QuA45FjkQ",
+      "sourcePath": "8Dominos/Why Effort Fails.mp4",
+      "originalTitle": "Why Effort Fails.mp4",
+      "mimeType": "video/mp4",
+      "size": 1280632630,
+      "modifiedTime": "2026-06-23T23:55:46.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1SrftQTChnW6wkSoohQgMZbVEiUCG0hoq",
+      "sourcePath": "8Dominos/How I Gamfied My Life.mp4",
+      "originalTitle": "How I Gamfied My Life.mp4",
+      "mimeType": "video/mp4",
+      "size": 1099016521,
+      "modifiedTime": "2026-06-23T16:36:47.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1mapFYn8X5e9iJXKaj7_M21_g16o2V1hq",
+      "sourcePath": "8Dominos/The Future You Isn’t Raising Your Kids.mp4",
+      "originalTitle": "The Future You Isn’t Raising Your Kids.mp4",
+      "mimeType": "video/mp4",
+      "size": 1586810407,
+      "modifiedTime": "2026-06-14T11:42:05.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1vWG9eDP1XUDNIZ47cnmCYZWjPOkkAjB7",
+      "sourcePath": "8Dominos/Therapy.mp4",
+      "originalTitle": "Therapy.mp4",
+      "mimeType": "video/mp4",
+      "size": 1154989378,
+      "modifiedTime": "2026-06-10T18:09:33.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "179l3Zh-0KT3MlHiLPO_zb4JxPItcI0C9",
+      "sourcePath": "8Dominos/Pressure doesnt mean progress.mp4",
+      "originalTitle": "Pressure doesnt mean progress.mp4",
+      "mimeType": "video/mp4",
+      "size": 1063737547,
+      "modifiedTime": "2026-06-10T09:52:19.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1PIGYWkNQvg1GHHAGEpn3M0hdVQi-iLLx",
+      "sourcePath": "8Dominos_Reels/Comparison Disguise.mp4",
+      "originalTitle": "Comparison Disguise.mp4",
+      "mimeType": "video/mp4",
+      "size": 96227023,
+      "modifiedTime": "2026-06-27T14:47:38.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "14EwiJn7Tkwm41yaGHS-LtAaqOJsHXm9R",
+      "sourcePath": "8Dominos_Reels/The Loop of Comparison.mp4",
+      "originalTitle": "The Loop of Comparison.mp4",
+      "mimeType": "video/mp4",
+      "size": 114119835,
+      "modifiedTime": "2026-06-27T14:47:02.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1kk7vjnKqmiuxSgG2yLiJvBp9Cck_Tm2o",
+      "sourcePath": "8Dominos_Reels/Choose her over and over.mp4",
+      "originalTitle": "Choose her over and over.mp4",
+      "mimeType": "video/mp4",
+      "size": 164060658,
+      "modifiedTime": "2026-06-27T14:44:55.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1QXVhCTXMFLf8XnhUES00sk2Qyje-a_4F",
+      "sourcePath": "8Dominos_Reels/8 Dominios (LOVE).mp4",
+      "originalTitle": "8 Dominios (LOVE).mp4",
+      "mimeType": "video/mp4",
+      "size": 310490734,
+      "modifiedTime": "2026-06-27T14:42:46.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1guw2cKrKA6COs7TtI7N-q3uJQMlYkvQY",
+      "sourcePath": "8Dominos_Reels/About the relief.mp4",
+      "originalTitle": "About the relief.mp4",
+      "mimeType": "video/mp4",
+      "size": 149495190,
+      "modifiedTime": "2026-06-27T14:40:49.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1FO7kD_1Dn8kIr4Zvlv7TLLS8TEw66ZS2",
+      "sourcePath": "8Dominos_Reels/The men i respect the most.mp4",
+      "originalTitle": "The men i respect the most.mp4",
+      "mimeType": "video/mp4",
+      "size": 73416153,
+      "modifiedTime": "2026-06-27T14:39:44.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1Cj3z3JJstzuagbCMI5e8-TfkZYxIfoas",
+      "sourcePath": "8Dominos_Reels/The Waiting Room.mp4",
+      "originalTitle": "The Waiting Room.mp4",
+      "mimeType": "video/mp4",
+      "size": 118268999,
+      "modifiedTime": "2026-06-27T14:39:15.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1IV5OLhJOw5ZjTPdD-qHHirsI12-Fgujo",
+      "sourcePath": "8Dominos_Reels/This is why just stop.mp4",
+      "originalTitle": "This is why just stop.mp4",
+      "mimeType": "video/mp4",
+      "size": 163751263,
+      "modifiedTime": "2026-06-27T14:32:07.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1ArORCQFtm93EB6ov_BFdC_aRc--DvEOk",
+      "sourcePath": "8Dominos_Reels/Effort Works Most of the Time.mp4",
+      "originalTitle": "Effort Works Most of the Time.mp4",
+      "mimeType": "video/mp4",
+      "size": 251027066,
+      "modifiedTime": "2026-06-23T23:40:26.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1BVYge_M8Vl-T4yTn5sCTnmACsGQsVvMg",
+      "sourcePath": "8Dominos_Reels/8 Categories.mp4",
+      "originalTitle": "8 Categories.mp4",
+      "mimeType": "video/mp4",
+      "size": 164169597,
+      "modifiedTime": "2026-06-23T23:22:37.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "17SUKr-UOWkZWZcwE0jmsNXlv7sC_IInd",
+      "sourcePath": "8Dominos_Reels/Clarity.mp4",
+      "originalTitle": "Clarity.mp4",
+      "mimeType": "video/mp4",
+      "size": 73356875,
+      "modifiedTime": "2026-06-23T15:36:08.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1RsfgmHNW21EQ1qiJpOS1pgHA0mBYcWDK",
+      "sourcePath": "8Dominos_Reels/NUMBERS.mp4",
+      "originalTitle": "NUMBERS.mp4",
+      "mimeType": "video/mp4",
+      "size": 158082626,
+      "modifiedTime": "2026-06-23T15:33:21.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1z4bfUj9o3Xi11PHNUcwKvYF4QY8iAUGB",
+      "sourcePath": "8Dominos_Reels/SCORING YOUR LIFE.mp4",
+      "originalTitle": "SCORING YOUR LIFE.mp4",
+      "mimeType": "video/mp4",
+      "size": 195396528,
+      "modifiedTime": "2026-06-23T15:27:01.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "10xRr5eeOeBCUt2b4z-zyZ41gD5PhYKjG",
+      "sourcePath": "8Dominos_Reels/Question.mp4",
+      "originalTitle": "Question.mp4",
+      "mimeType": "video/mp4",
+      "size": 128147782,
+      "modifiedTime": "2026-06-13T13:06:34.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "13T_Impcw-sEAkAngVBgF4DonxEkK7axR",
+      "sourcePath": "8Dominos_Reels/Your children wont inherit your best moments.mp4",
+      "originalTitle": "Your children wont inherit your best moments.mp4",
+      "mimeType": "video/mp4",
+      "size": 109043304,
+      "modifiedTime": "2026-06-13T12:40:57.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1OhOs3k5XiLVBcqMx98gJrv2HvDr3Ks52",
+      "sourcePath": "8Dominos_Reels/kids access to you right now.mp4",
+      "originalTitle": "kids access to you right now.mp4",
+      "mimeType": "video/mp4",
+      "size": 114584966,
+      "modifiedTime": "2026-06-13T12:38:36.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1id59AoE0YnXjZhF9hzMHR2lyQ1awWKfy",
+      "sourcePath": "8Dominos_Reels/Hidden.mp4",
+      "originalTitle": "Hidden.mp4",
+      "mimeType": "video/mp4",
+      "size": 91535828,
+      "modifiedTime": "2026-06-04T14:09:49.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1xYqKEePwF3b2wUWIt-uSw3mYcQHvnMwb",
+      "sourcePath": "8Dominos_Reels/Performance.mp4",
+      "originalTitle": "Performance.mp4",
+      "mimeType": "video/mp4",
+      "size": 97379751,
+      "modifiedTime": "2026-06-04T14:03:34.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1Vq-xqpI8pwHvDG9Gi6D6zPMV-nkZPYmq",
+      "sourcePath": "8Dominos_Reels/Success.mp4",
+      "originalTitle": "Success.mp4",
+      "mimeType": "video/mp4",
+      "size": 123353062,
+      "modifiedTime": "2026-06-04T13:56:20.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1JPUxmfLsMxsko-k9ZIQ6tE_veQMrz-L5",
+      "sourcePath": "Nahark Eswed Reels/REEL_EP04_Cats and dogs.mp4",
+      "originalTitle": "REEL_EP04_Cats and dogs.mp4",
+      "mimeType": "video/mp4",
+      "size": 313722820,
+      "modifiedTime": "2025-11-23T20:00:10.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1_HWw9bG1Ji0aJ5Moqm6YtPiHBYAgWKbR",
+      "sourcePath": "Nahark Eswed Reels/REEL_ep04_iced earth.mp4",
+      "originalTitle": "REEL_ep04_iced earth.mp4",
+      "mimeType": "video/mp4",
+      "size": 154130358,
+      "modifiedTime": "2025-11-23T19:26:55.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1z-86lR5eFpofjBldVj3IRGukzdQeD2ll",
+      "sourcePath": "Nahark Eswed Reels/REEL_EP04_1.5of2.mp4",
+      "originalTitle": "REEL_EP04_1.5of2.mp4",
+      "mimeType": "video/mp4",
+      "size": 24204125,
+      "modifiedTime": "2025-11-23T19:22:16.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "17ZVTcu9YXwnRwTyyV7VB-SpDsofYfqm0",
+      "sourcePath": "Nahark Eswed Reels/REEL_ep04_Sabaton1of2.mp4",
+      "originalTitle": "REEL_ep04_Sabaton1of2.mp4",
+      "mimeType": "video/mp4",
+      "size": 12871502,
+      "modifiedTime": "2025-11-23T19:21:13.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1ZvfOwIFw1Im-bkpu7OH3Nio15OE5zzsK",
+      "sourcePath": "Nahark Eswed Reels/REEL_ep04_Sabaton 2of2.mp4",
+      "originalTitle": "REEL_ep04_Sabaton 2of2.mp4",
+      "mimeType": "video/mp4",
+      "size": 108376919,
+      "modifiedTime": "2025-11-23T19:19:28.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1n0hvlX9ccj7y-f4QNmxVu1xEVEf4EM6X",
+      "sourcePath": "Nahark Eswed Reels/REEL_Ep3_Metal for every occasion.mp4",
+      "originalTitle": "REEL_Ep3_Metal for every occasion.mp4",
+      "mimeType": "video/mp4",
+      "size": 68122547,
+      "modifiedTime": "2025-11-23T18:17:12.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "10nnHOyMkd30t1t3Cz-CZyp_YrG28EzTH",
+      "sourcePath": "Nahark Eswed Reels/REEL_Ep3_MeccaZendeeq.mp4",
+      "originalTitle": "REEL_Ep3_MeccaZendeeq.mp4",
+      "mimeType": "video/mp4",
+      "size": 187700124,
+      "modifiedTime": "2025-11-23T18:03:59.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1HjhmjWOfIKjmC0J4O5T5pSuL-LUSzsnq",
+      "sourcePath": "Nahark Eswed Reels/REEL_Ep3_3arabi mafeesh content.mp4",
+      "originalTitle": "REEL_Ep3_3arabi mafeesh content.mp4",
+      "mimeType": "video/mp4",
+      "size": 82491850,
+      "modifiedTime": "2025-11-23T17:52:24.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "19V_4QAuBpJ23GXBrfkso0azIec2gJqsI",
+      "sourcePath": "Nahark Eswed Reels/REEL_5U50Zornheym.mp4",
+      "originalTitle": "REEL_5U50Zornheym.mp4",
+      "mimeType": "video/mp4",
+      "size": 211768573,
+      "modifiedTime": "2025-11-13T14:09:05.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1SebLrCrM7wNnkW1mKJ7TpKCJGS9CSiCf",
+      "sourcePath": "Nahark Eswed Reels/REEL_5U50_small_bands_investment.mp4",
+      "originalTitle": "REEL_5U50_small_bands_investment.mp4",
+      "mimeType": "video/mp4",
+      "size": 193635654,
+      "modifiedTime": "2025-11-13T13:27:10.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1KPM0RhbLhJrwv_4l_77xREHjP0ziE1Ri",
+      "sourcePath": "Nahark Eswed Reels/REEL_5U50intro.mp4",
+      "originalTitle": "REEL_5U50intro.mp4",
+      "mimeType": "video/mp4",
+      "size": 181903164,
+      "modifiedTime": "2025-11-13T13:19:14.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1Wvpo4btKW0Nr8x884SXouJgFT2AhNr9x",
+      "sourcePath": "Nahark Eswed Reels/REEL_Mo3anatELSharayet.mp4",
+      "originalTitle": "REEL_Mo3anatELSharayet.mp4",
+      "mimeType": "video/mp4",
+      "size": 150232214,
+      "modifiedTime": "2025-11-10T20:35:17.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1BMmVecr0atGwoDCzNPuE7a8PopZUJ4U8",
+      "sourcePath": "Nahark Eswed Reels/REEL_BlackSabathFirstListen.mp4",
+      "originalTitle": "REEL_BlackSabathFirstListen.mp4",
+      "mimeType": "video/mp4",
+      "size": 78915582,
+      "modifiedTime": "2025-11-10T20:00:23.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "17jJIh4_gU3OEzNs2hFKdmTC4sZEQ0WyE",
+      "sourcePath": "Nahark Eswed Reels/REEL_OmarFestivalEurope.mp4",
+      "originalTitle": "REEL_OmarFestivalEurope.mp4",
+      "mimeType": "video/mp4",
+      "size": 15459207,
+      "modifiedTime": "2025-11-10T19:22:47.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "14QDMVIdDJO6jVTzt5PbcrFviXL2-J-r3",
+      "sourcePath": "ADIB EGYPT REELS/ولسه المفاجآت مخلصتش! مستنيينكم كل جمعة وسبت مع ADIB Egypt، علشان لو انت من عملائنا… يبقى ليك م.mp4",
+      "originalTitle": "ولسه المفاجآت مخلصتش! مستنيينكم كل جمعة وسبت مع ADIB Egypt، علشان لو انت من عملائنا… يبقى ليك م.mp4",
+      "mimeType": "video/mp4",
+      "size": 7703565,
+      "modifiedTime": "2025-10-08T15:42:27.881Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1zbt8WfnVRzv3cxuLlPJY0b752jQXqMPz",
+      "sourcePath": "ADIB EGYPT REELS/_ده كان رأي عملائنا في تجربتهم معانا… قولنا رأيك في الكومنتات .رقم التسجيل الضريبي 204900255#رأ.mp4",
+      "originalTitle": "_ده كان رأي عملائنا في تجربتهم معانا… قولنا رأيك في الكومنتات .رقم التسجيل الضريبي 204900255#رأ.mp4",
+      "mimeType": "video/mp4",
+      "size": 4111057,
+      "modifiedTime": "2025-10-08T15:40:59.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1dgKEIm4H05faD3zPFlniZJGOYalMpBIw",
+      "sourcePath": "ADIB EGYPT REELS/و لسا المفاجآت مخلصتش … استنونا في عروض أكتر من ADIB-Egyptتطبق الشروط والأحكامرقم التسجيل الضريب.mp4",
+      "originalTitle": "و لسا المفاجآت مخلصتش … استنونا في عروض أكتر من ADIB-Egyptتطبق الشروط والأحكامرقم التسجيل الضريب.mp4",
+      "mimeType": "video/mp4",
+      "size": 14953358,
+      "modifiedTime": "2025-10-08T15:40:26.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1hNxQBVJ8-gjVFfw2aohgCqSYU1q4IggV",
+      "sourcePath": "ADIB EGYPT REELS/“ده كان رأي عملائنا في تجربتهم معانا…قولنا رأيك في الكومنتات  #رأيك_يهمنا #صوت_عملائنا”#ADIB_Egy.mp4",
+      "originalTitle": "“ده كان رأي عملائنا في تجربتهم معانا…قولنا رأيك في الكومنتات  #رأيك_يهمنا #صوت_عملائنا”#ADIB_Egy.mp4",
+      "mimeType": "video/mp4",
+      "size": 3148646,
+      "modifiedTime": "2025-07-26T18:52:28.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "16xqFDV8O-T3Tv_3Rfbm07W2i8Z2mf9Pl",
+      "sourcePath": "ADIB EGYPT REELS/ولسه المفاجآت مخلصتش! مستنيينكم كل جمعة وسبت مع ADIB-Egypt ، علشان لو إنت من عملائنا… يبقى ليك .mp4",
+      "originalTitle": "ولسه المفاجآت مخلصتش! مستنيينكم كل جمعة وسبت مع ADIB-Egypt ، علشان لو إنت من عملائنا… يبقى ليك .mp4",
+      "mimeType": "video/mp4",
+      "size": 8334295,
+      "modifiedTime": "2025-07-26T18:51:19.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1hhzDwr-cT4J5ppEDQ3cs-vEsPiqZtPCQ",
+      "sourcePath": "ADIB EGYPT REELS/ولسه المفاجآت مخلصتش! مستنيينكم كل جمعة وسبت مع ADIB Egypt، علشان لو إنت من عملائنا… يبقى ليك م.mp4",
+      "originalTitle": "ولسه المفاجآت مخلصتش! مستنيينكم كل جمعة وسبت مع ADIB Egypt، علشان لو إنت من عملائنا… يبقى ليك م.mp4",
+      "mimeType": "video/mp4",
+      "size": 9344748,
+      "modifiedTime": "2025-07-26T18:50:22.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1p4h0NBK8J4oPm8XCxpTyNl59oTO40yEe",
+      "sourcePath": "Enty Asl El Hekaya/الحلقة الرابعة ｜｜ بودكاست أنتِ أصل الحكاية.mp4",
+      "originalTitle": "الحلقة الرابعة ｜｜ بودكاست أنتِ أصل الحكاية.mp4",
+      "mimeType": "video/mp4",
+      "size": 247558093,
+      "modifiedTime": "2025-04-02T10:56:13.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "16kl-TkbvU090UNE0v2GnmIBiq5-bbbEt",
+      "sourcePath": "Enty Asl El Hekaya/الحلقة الثالثة ｜｜ بودكاست أنتِ أصل الحكاية.mp4",
+      "originalTitle": "الحلقة الثالثة ｜｜ بودكاست أنتِ أصل الحكاية.mp4",
+      "mimeType": "video/mp4",
+      "size": 212258491,
+      "modifiedTime": "2025-03-22T00:10:42.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "17AowvP6cMvmD0yhEehTEPM7CKsGh7s2_",
+      "sourcePath": "Enty Asl El Hekaya/الحلقة الاولي ｜｜ بودكاست أنتِ أصل الحكاية.mp4",
+      "originalTitle": "الحلقة الاولي ｜｜ بودكاست أنتِ أصل الحكاية.mp4",
+      "mimeType": "video/mp4",
+      "size": 223627924,
+      "modifiedTime": "2025-03-22T00:07:51.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "15eUSAjrLff5zu9MVdm6vn7CHnGQujNDi",
+      "sourcePath": "Enty Asl El Hekaya/الحلقة الثانية ｜｜ بودكاست أنتِ أصل الحكاية.mp4",
+      "originalTitle": "الحلقة الثانية ｜｜ بودكاست أنتِ أصل الحكاية.mp4",
+      "mimeType": "video/mp4",
+      "size": 245835744,
+      "modifiedTime": "2025-03-22T00:04:55.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "15YChyA-GE6dfKDI_D_-meJTK2DWLvIm_",
+      "sourcePath": "The Shock/الموضوع عن عمالة الأطفال..ماذا لو حدث أمامك هذا الموقف؟! ‫#الصدمة‬.mp4",
+      "originalTitle": "الموضوع عن عمالة الأطفال..ماذا لو حدث أمامك هذا الموقف؟! ‫#الصدمة‬.mp4",
+      "mimeType": "video/mp4",
+      "size": 9582527,
+      "modifiedTime": "2024-03-13T08:03:31.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1UgWm2DQ5vzTJm4c2UrIiRFjPxjDTAj-7",
+      "sourcePath": "The Shock/الحلقة 11 من برنامج الصدمة - شاهد كيف تعامل الناس مع زوج يضرب زوجته في مكان عام.mp4",
+      "originalTitle": "الحلقة 11 من برنامج الصدمة - شاهد كيف تعامل الناس مع زوج يضرب زوجته في مكان عام.mp4",
+      "mimeType": "video/mp4",
+      "size": 25830607,
+      "modifiedTime": "2024-03-13T08:02:37.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1zf_t2s08GSs_EhND_5m3HFsSpeaZCoNU",
+      "sourcePath": "The Shock/برنامج الصدمة – الحلقة 1 - مفيش حد وحش.. رد فعل مؤثر وإنساني من المارة في الشارع.mp4",
+      "originalTitle": "برنامج الصدمة – الحلقة 1 - مفيش حد وحش.. رد فعل مؤثر وإنساني من المارة في الشارع.mp4",
+      "mimeType": "video/mp4",
+      "size": 79799326,
+      "modifiedTime": "2024-03-13T08:02:19.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1nvNNWIvHKLiPzAAROgvZK9xC-MeOSAnz",
+      "sourcePath": "The Shock/بعد إهانة الإبن لـ الأب.. كان لازم نتدخل!.mp4",
+      "originalTitle": "بعد إهانة الإبن لـ الأب.. كان لازم نتدخل!.mp4",
+      "mimeType": "video/mp4",
+      "size": 91337535,
+      "modifiedTime": "2024-03-13T07:59:51.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1-aKQ0XYCg0QQs-HRzcwntWSWdNTRilVQ",
+      "sourcePath": "The Shock/برنامج الصدمة - عماله الاطفال",
+      "originalTitle": "برنامج الصدمة - عماله الاطفال",
+      "mimeType": "video/mp4",
+      "size": 105230958,
+      "modifiedTime": "2024-03-13T07:58:41.625Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1MFUEo63OmpZO7hlqWbx7CLEJZT42KLRW",
+      "sourcePath": "Instagram Reels/Degwy.mp4",
+      "originalTitle": "Degwy.mp4",
+      "mimeType": "video/mp4",
+      "size": 3017821,
+      "modifiedTime": "2024-03-13T07:54:52.683Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1-Byc7Fkkm2BMZ9LrqAsvuxd-e9kTy0cw",
+      "sourcePath": "Instagram Reels/EVA Massage colored.mp4",
+      "originalTitle": "EVA Massage colored.mp4",
+      "mimeType": "video/mp4",
+      "size": 81027864,
+      "modifiedTime": "2022-12-20T23:33:21.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    },
+    {
+      "driveId": "1FvgBZ_-vcHRbzFwY0DYi3uj71hl_P4tI",
+      "sourcePath": "Instagram Reels/JOJO.mp4",
+      "originalTitle": "JOJO.mp4",
+      "mimeType": "video/mp4",
+      "size": 18404289,
+      "modifiedTime": "2021-01-21T16:48:49.000Z",
+      "publicViewStatus": "anonymous_preview_verified",
+      "canDownload": true
+    }
+  ],
+  "sourceDocuments": [
+    {
+      "driveId": "1taCogwYKf3C2Mq1-Se3qyq1z1xDym_WD",
+      "sourcePath": "Drive root/Ahmed-Azzam - CV .pdf",
+      "originalTitle": "Ahmed-Azzam - CV .pdf",
+      "mimeType": "application/pdf",
+      "size": 633609,
+      "modifiedTime": "2025-04-20T01:37:35.708Z",
+      "publicViewStatus": "access_not_verified",
+      "canDownload": true
+    }
+  ],
+  "anonymousPreviewAuditAt": "2026-08-08T00:00:00.000Z"
+}

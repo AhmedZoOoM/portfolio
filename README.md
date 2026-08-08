@@ -1,38 +1,23 @@
-# Ahmed Zooom
+# Ahmed Azzam portfolio
 
-Senior Video Editing Specialist | 10+ Years of Professional Experience
+A dependency-free GitHub Pages portfolio for Ahmed Azzam (AhmedZoOoM).
 
----
+## Content source of truth
 
-## About
+- `data/drive-inventory.json` is the saved source scan.
+- `js/portfolio-data.js` is the browser manifest and maps every scanned media Drive ID once.
+- The media remains hosted in [the canonical Google Drive folder](https://drive.google.com/drive/folders/1M-fwHszneqa2h0xoZhImtVKoBZdmAMP9); the repository does not contain copied video files.
 
-Experienced video editor with a decade of professional work in broadcast, commercial, and digital media production. Specializing in narrative-driven editing, color grading, and post-production workflow optimization.
+To add or remove media, rescan the Drive folder, update the inventory and the manifest together, then run:
 
-**[View Full Portfolio →](https://ahmedzooom.github.io)**
+```sh
+node --check js/portfolio-data.js
+node --check js/script.js
+node scripts/verify-portfolio.mjs
+```
 
----
+The completion requirement is exact ID equality: Drive inventory = manifest = rendered archive. Do not omit alternate exports or grouped variants.
 
-## Core Expertise
+## Privacy and presentation
 
-- **Editorial Editing** – Narrative structure, pacing, and storytelling
-- **Color Grading** – DaVinci Resolve, professional color correction
-- **Motion Graphics** – Titles, transitions, and visual effects
-- **Audio Post-Production** – Mixing, sound design, and synchronization
-- **Broadcast & Commercial** – High-volume, deadline-driven production
-- **Workflow Optimization** – Adobe Creative Suite, Avid, Final Cut Pro
-
----
-
-## Featured Work
-
-Visit the [portfolio site](https://ahmedzooom.github.io) for detailed project case studies and video samples.
-
----
-
-## Get In Touch
-
-[Email](mailto:hello@example.com) • [LinkedIn](https://linkedin.com) • [Vimeo](https://vimeo.com) • [Instagram](https://instagram.com)
-
----
-
-*Crafted with care. Updated regularly.*
+The site publishes only CV-derived professional information. It does not publish the raw CV or private personal details. Video caption availability is stated honestly per item; no accessibility conformance claim is made for videos without captions. Work is displayed for professional demonstration and project/client rights remain with their respective owners.
