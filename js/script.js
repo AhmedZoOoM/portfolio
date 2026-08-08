@@ -41,7 +41,7 @@
     copy.append(
       element("p", { className: "card-meta", text: item.category }),
       element("h3", { text: item.displayTitle }),
-      element("p", { className: "card-meta", text: item.kind === "video" ? "Video · captions unavailable" : "Still image" })
+      element("p", { className: "card-meta", text: item.kind === "video" ? "Video · " + captionLabel(item.captionState) : "Still image" })
     );
     const links = element("div", { className: "card-links" });
     const source = element("a", { href: item.originalUrl, target: "_blank", rel: "noopener noreferrer", text: "Open original in Drive" });
@@ -51,6 +51,10 @@
     open.addEventListener("click", () => openMedia(item, open));
     article.append(open, links);
     return article;
+  }
+
+  function captionLabel(state) {
+    return { available: "captions available", unavailable: "captions unavailable", unknown: "caption status unknown" }[state] || "captions not applicable";
   }
 
   function renderFeatured() {

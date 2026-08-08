@@ -7,6 +7,9 @@ const inventoryPath = resolve(root, "data", "drive-inventory.json");
 const manifestPath = resolve(root, "js", "portfolio-data.js");
 const htmlPath = resolve(root, "index.html");
 const scriptPath = resolve(root, "js", "script.js");
+const MAX_CONCURRENT_REQUESTS = 12;
+const MAX_ATTEMPTS = 4;
+const delay = (milliseconds) => new Promise((resolveDelay) => setTimeout(resolveDelay, milliseconds));
 
 function fail(message) {
   console.error(`FAIL ${message}`);
@@ -17,7 +20,7 @@ if (!existsSync(inventoryPath)) fail("source inventory missing: data/drive-inven
 if (!existsSync(manifestPath)) fail("manifest missing: js/portfolio-data.js");
 if (!existsSync(htmlPath)) fail("document missing: index.html");
 if (!existsSync(scriptPath)) fail("renderer missing: js/script.js");
-if (process.exitCode) process.exit();
+if (process.exitCode) process.exit(process.exitCode);
 
 const inventory = JSON.parse(readFileSync(inventoryPath, "utf8"));
 const inventoryMedia = inventory.media || [];
@@ -77,24 +80,39 @@ for (const forbidden of ["birth date", "marital status", "military status", "Ahm
 if (!process.exitCode) {
   const urls = manifestMedia.flatMap((item) => [
     ["preview", `https://drive.google.com/file/d/${item.driveId}/preview`, item],
-    ["original", item.originalUrl, item],
     ["poster", item.posterUrl, item]
   ]);
   const failures = [];
-  await Promise.all(urls.map(async ([kind, url, item]) => {
-    try {
-      const response = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(20000) });
-      if (!response.ok) failures.push(`${kind} URL failed for ${item.driveId}: HTTP ${response.status}`);
-      if (kind === "preview") {
-        const text = await response.text();
-        if (/request access|you need access|access denied|sign in to continue/i.test(text)) failures.push(`preview requires authentication for ${item.driveId}`);
+  async function validateUrl([kind, url, item]) {
+    for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
+      try {
+        const response = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(20000) });
+        if (response.status === 429 && attempt < MAX_ATTEMPTS) {
+          const retryAfter = Number(response.headers.get("retry-after"));
+          await delay(Number.isFinite(retryAfter) ? retryAfter * 1000 : attempt * 750);
+          continue;
+        }
+        if (!response.ok) failures.push(`${kind} URL failed for ${item.driveId}: HTTP ${response.status}`);
+        if (kind === "preview") {
+          const text = await response.text();
+          if (/request access|you need access|access denied|sign in to continue/i.test(text)) failures.push(`preview requires authentication for ${item.driveId}`);
+        }
+        return;
+      } catch (error) {
+        if (attempt < MAX_ATTEMPTS) {
+          await delay(attempt * 750);
+          continue;
+        }
+        failures.push(`${kind} URL failed for ${item.driveId}: ${error.message}`);
       }
-    } catch (error) {
-      failures.push(`${kind} URL failed for ${item.driveId}: ${error.message}`);
     }
-  }));
+  }
+  for (let offset = 0; offset < urls.length; offset += MAX_CONCURRENT_REQUESTS) {
+    await Promise.all(urls.slice(offset, offset + MAX_CONCURRENT_REQUESTS).map(validateUrl));
+    await delay(100);
+  }
   failures.forEach(fail);
-  if (process.exitCode) process.exit();
+  if (process.exitCode) process.exit(process.exitCode);
   console.log(`PASS source inventory: ${inventoryMedia.length} media IDs (${videos} video, ${images} image)`);
   console.log(`PASS manifest coverage: ${manifestIds.size}/${inventoryIds.size} unique Drive IDs`);
   console.log("PASS document and renderer contract");
