@@ -1,11 +1,6 @@
 import assert from "node:assert/strict";
 
 const pageUrl = process.argv[2];
-const representativeVideos = [
-  "17AowvP6cMvmD0yhEehTEPM7CKsGh7s2_",
-  "14QDMVIdDJO6jVTzt5PbcrFviXL2-J-r3",
-  "1XahedVA2AfhI9dL71OwIQHLwB541uw2P"
-];
 const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 if (!pageUrl) throw new Error("Usage: node scripts/verify-live-media.mjs <GitHub Pages URL>");
@@ -37,20 +32,9 @@ const assets = await Promise.all(assetPaths.map(async (path) => {
 }));
 const bundle = assets.filter((asset) => asset.path.endsWith(".js")).map((asset) => asset.text).join("\n");
 const css = assets.filter((asset) => asset.path.endsWith(".css")).map((asset) => asset.text).join("\n");
-assert.match(bundle, /drive\.usercontent\.google\.com\/download/, "deployed bundle must use the native Drive stream source");
-assert.match(bundle, /createElement\("video"\)/, "deployed bundle must create a native video player");
-assert.match(bundle, /Use Google Drive player/, "deployed bundle must retain the Drive fallback");
+assert.match(bundle, /drive\.google\.com\/file\/d\//, "deployed bundle must use the supported Drive preview source");
+assert.match(bundle, /createElement\("iframe"\)/, "deployed bundle must create the supported Drive preview player");
+assert.match(bundle, /Open in Google Drive/, "deployed bundle must retain the external Drive fallback");
 assert.match(css, /media-player-actions/, "deployed stylesheet must include player fallback controls");
-
-for (const driveId of representativeVideos) {
-  const response = await fetch(`https://drive.usercontent.google.com/download?id=${driveId}&export=download&confirm=t`, {
-    headers: { Range: "bytes=0-1023" },
-    redirect: "follow",
-    signal: AbortSignal.timeout(20000)
-  });
-  assert.equal(response.status, 206, `live representative ${driveId} must support byte ranges`);
-  assert.ok(response.headers.get("content-type")?.startsWith("video/"), `live representative ${driveId} must remain a video response`);
-  await response.body?.cancel();
-}
 
 console.log(`PASS live media deployment: ${pageUrl}`);

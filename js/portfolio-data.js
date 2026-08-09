@@ -524,7 +524,6 @@
       variantGroup: project.id,
       provider: "drive",
       providerId: null,
-      playbackUrl: isImage ? null : "https://drive.usercontent.google.com/download?id=" + source.driveId + "&export=download&confirm=t",
       posterUrl: "https://drive.google.com/thumbnail?id=" + source.driveId + "&sz=w1200",
       originalUrl: "https://drive.google.com/file/d/" + source.driveId + "/view",
       captionState: isImage ? "not-applicable" : "unavailable",

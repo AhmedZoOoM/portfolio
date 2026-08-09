@@ -34,6 +34,7 @@ const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const main = readFileSync(new URL("../src/main.js", import.meta.url), "utf8");
 const componentStyles = readFileSync(new URL("../src/styles/components.css", import.meta.url), "utf8");
 const dialogRenderer = readFileSync(new URL("../src/components/media-dialog.js", import.meta.url), "utf8");
+const liveVerifier = readFileSync(new URL("../scripts/verify-live-media.mjs", import.meta.url), "utf8");
 const packageJson = readFileSync(new URL("../package.json", import.meta.url), "utf8");
 const deployWorkflow = readFileSync(new URL("../.github/workflows/deploy-pages.yml", import.meta.url), "utf8");
 assert.match(html, /aria-label="Verified social profiles"/, "social navigation must stay labeled");
@@ -46,6 +47,8 @@ assert.match(main, /target\.scrollIntoView\(\{ block: "start" \}\)/, "hash reali
 assert.doesNotMatch(componentStyles, /content-visibility\s*:\s*auto/, "archive layout must remain measurable before an anchor below it is selected");
 assert.match(dialogRenderer, /media-frame-\$\{item\.aspect\}/, "the media dialog must preserve each item's aspect ratio");
 assert.match(dialogRenderer, /autoplay; fullscreen; picture-in-picture/, "the Drive embed must permit user-initiated playback");
+assert.doesNotMatch(dialogRenderer, /createElement\("video"\)/, "the Pages viewer must not use a Drive download endpoint blocked by cross-origin resource policy");
+assert.doesNotMatch(liveVerifier, /drive\.usercontent\.google\.com/, "the live verifier must validate the supported embedded player path");
 assert.match(componentStyles, /\.media-frame-portrait/, "portrait media requires a viewport-bounded viewer treatment");
 assert.match(componentStyles, /100dvh/, "the viewer must account for mobile browser viewport height");
 assert.match(packageJson, /"verify:live"/, "the portfolio must expose a post-deploy media verification command");

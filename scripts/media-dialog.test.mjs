@@ -81,25 +81,13 @@ openMedia({
 
 const findByTag = (node, tagName) => node.tagName === tagName ? node : node.children.map((child) => findByTag(child, tagName)).find(Boolean);
 const findByText = (node, value) => node.textContent === value ? node : node.children.map((child) => findByText(child, value)).find(Boolean);
-const video = findByTag(content, "VIDEO");
-assert.ok(video, "Drive videos must open in the page-owned native video player");
-assert.equal(video.src, "https://drive.usercontent.google.com/download?id=video-id&export=download&confirm=t");
-assert.equal(video.controls, true);
-assert.equal(video.playsInline, true);
-assert.equal(video.poster, "https://example.test/poster.jpg");
-
-video.dispatch("error");
-assert.equal(
-  findByText(content, "This browser could not start the embedded video. Use the Google Drive player instead.")?.textContent,
-  "This browser could not start the embedded video. Use the Google Drive player instead.",
-  "native playback errors must explain the recovery path"
-);
-
-const preview = findByText(content, "Use Google Drive player");
-assert.ok(preview, "native playback must retain an explicit Google Drive fallback");
-preview.dispatch("click");
 const frame = findByTag(content, "IFRAME");
-assert.ok(frame, "the fallback action must replace the native player with the Google Drive preview");
+assert.ok(frame, "Drive videos must open in the supported Google Drive preview player");
 assert.equal(frame.src, "https://drive.google.com/file/d/video-id/preview");
+assert.equal(frame.allow, "autoplay; fullscreen; picture-in-picture; encrypted-media");
+assert.equal(frame.allowFullscreen, true);
+const source = findByText(content, "Open in Google Drive");
+assert.ok(source, "the embedded player must retain an explicit external fallback");
+assert.equal(source.href, "https://drive.google.com/file/d/video-id/view");
 
-console.log("PASS native Drive media dialog");
+console.log("PASS supported Drive media dialog");

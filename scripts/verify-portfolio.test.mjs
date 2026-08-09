@@ -17,8 +17,6 @@ assert.doesNotMatch(renderer, /Video · captions unavailable/, "caption label mu
 assert.match(renderer, /captionLabel/, "caption label must derive from manifest state");
 assert.match(verifier, /src", "main\.js"/, "the verifier must validate the Vite module entrypoint");
 assert.match(verifier, /src", "components", "media-card\.js"/, "the verifier must validate the Vite card renderer contract");
-assert.match(verifier, /"playbackUrl"/, "the verifier must require the native Drive stream contract");
-assert.match(verifier, /Range:\s*"bytes=0-1023"/, "the verifier must probe native streams with a small byte range");
-assert.match(verifier, /response\.status !== 206/, "the verifier must reject non-seekable native stream responses");
+assert.doesNotMatch(verifier, /drive\.usercontent\.google\.com/, "the verifier must not treat a cross-origin download endpoint as an embeddable player source");
 
 console.log("PASS rate-limit, privacy, and caption regressions");
