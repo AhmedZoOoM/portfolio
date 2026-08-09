@@ -35,3 +35,4 @@ jobs:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
+      - run: npm run verify:live -- "${{ steps.deployment.outputs.page_url }}"

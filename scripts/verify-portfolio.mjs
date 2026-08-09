@@ -46,12 +46,14 @@ const data = sandbox.window.PORTFOLIO_DATA;
 if (!data) fail("manifest does not assign window.PORTFOLIO_DATA");
 const manifestMedia = data?.projects?.flatMap((project) => project.media || []) || [];
 const manifestIds = new Set(manifestMedia.map((item) => item.driveId));
-const requiredFields = ["driveId", "sourcePath", "originalTitle", "displayTitle", "kind", "aspect", "language", "dir", "variantGroup", "provider", "providerId", "posterUrl", "originalUrl", "captionState", "ariaLabel", "credits", "rightsNote"];
+const requiredFields = ["driveId", "sourcePath", "originalTitle", "displayTitle", "kind", "aspect", "language", "dir", "variantGroup", "provider", "providerId", "playbackUrl", "posterUrl", "originalUrl", "captionState", "ariaLabel", "credits", "rightsNote"];
 for (const item of manifestMedia) {
   for (const field of requiredFields) if (!(field in item)) fail(`manifest ${item.driveId || item.sourcePath} missing ${field}`);
   if (!inventoryIds.has(item.driveId)) fail(`manifest has unknown Drive ID ${item.driveId}`);
   if (!/^https:\/\/drive\.google\.com\/thumbnail\?id=[\w-]+&sz=w1200$/.test(item.posterUrl)) fail(`invalid poster URL for ${item.driveId}`);
   if (!new RegExp(`^https://drive\\.google\\.com/file/d/${item.driveId}/view$`).test(item.originalUrl)) fail(`invalid Drive URL for ${item.driveId}`);
+  if (item.kind === "video" && item.playbackUrl !== `https://drive.usercontent.google.com/download?id=${item.driveId}&export=download&confirm=t`) fail(`invalid native Drive stream URL for ${item.driveId}`);
+  if (item.kind === "image" && item.playbackUrl !== null) fail(`still image must not declare a video stream URL: ${item.driveId}`);
   if (!["video", "image"].includes(item.kind)) fail(`invalid kind for ${item.driveId}`);
   if (!["rtl", "ltr"].includes(item.dir)) fail(`invalid direction for ${item.driveId}`);
   if (!["available", "unavailable", "not-applicable", "unknown"].includes(item.captionState)) fail(`invalid caption state for ${item.driveId}`);
@@ -92,19 +94,30 @@ for (const forbidden of ["birth date", "marital status", "military status", "Ahm
 if (!process.exitCode) {
   const urls = manifestMedia.flatMap((item) => [
     ["preview", `https://drive.google.com/file/d/${item.driveId}/preview`, item],
-    ["poster", item.posterUrl, item]
+    ["poster", item.posterUrl, item],
+    ...(item.kind === "video" ? [["stream", item.playbackUrl, item]] : [])
   ]);
   const failures = [];
   async function validateUrl([kind, url, item]) {
     for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
       try {
-        const response = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(20000) });
+        const response = await fetch(url, {
+          redirect: "follow",
+          headers: kind === "stream" ? { Range: "bytes=0-1023" } : undefined,
+          signal: AbortSignal.timeout(20000)
+        });
         if (response.status === 429 && attempt < MAX_ATTEMPTS) {
           const retryAfter = Number(response.headers.get("retry-after"));
           await delay(Number.isFinite(retryAfter) ? retryAfter * 1000 : attempt * 750);
           continue;
         }
         if (!response.ok) failures.push(`${kind} URL failed for ${item.driveId}: HTTP ${response.status}`);
+        if (kind === "stream") {
+          if (response.status !== 206) failures.push(`native stream is not range-seekable for ${item.driveId}: HTTP ${response.status}`);
+          if (!response.headers.get("content-type")?.startsWith("video/")) failures.push(`native stream is not a video response for ${item.driveId}`);
+          if (!response.headers.get("content-range")?.startsWith("bytes 0-1023/")) failures.push(`native stream returned an invalid byte range for ${item.driveId}`);
+          await response.body?.cancel();
+        }
         if (kind === "preview") {
           const text = await response.text();
           if (/request access|you need access|access denied|sign in to continue/i.test(text)) failures.push(`preview requires authentication for ${item.driveId}`);

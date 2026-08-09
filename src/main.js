@@ -1,7 +1,4 @@
-// Vite bundles this stylesheet. The rejection is intentionally ignored when the
-// repository is served directly by legacy GitHub Pages, where css/style.css is
-// the equivalent fallback stylesheet.
-import("./styles/index.css").catch(() => {});
+import "./styles/index.css";
 
 import { portfolioData } from "./data/portfolio-data.js";
 import { renderArchive } from "./components/archive.js";
