@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node scripts/verify-portfolio.test.mjs && node scripts/revamp-contract.test.mjs",
+    "test": "node scripts/verify-portfolio.test.mjs && node scripts/revamp-contract.test.mjs && node scripts/media-dialog.test.mjs && node scripts/drive-stream.test.mjs",
     "verify": "node scripts/verify-portfolio.mjs",
+    "verify:live": "node scripts/verify-live-media.mjs",
     "verify:dist": "node scripts/verify-dist.mjs",
     "test:e2e": "node scripts/smoke-test.mjs",
     "check": "npm run test && npm run build && npm run verify:dist"
