@@ -13,7 +13,7 @@
 .filter { border: 1px solid var(--line); background: transparent; padding: .6rem .8rem; color: var(--text); cursor: pointer; }
 .filter[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--text); }
 .archive-groups { display: grid; gap: .8rem; margin-top: 2rem; }
-.project-drawer { border: 1px solid var(--line); background: var(--panel); content-visibility: auto; contain-intrinsic-size: auto 7rem; }
+.project-drawer { border: 1px solid var(--line); background: var(--panel); }
 .project-drawer[open] { border-color: var(--accent); }
 .project-drawer summary { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; padding: 1rem; cursor: pointer; list-style: none; }
 .project-drawer summary::-webkit-details-marker { display: none; }
