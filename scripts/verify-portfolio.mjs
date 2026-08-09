@@ -76,7 +76,7 @@ for (const file of [htmlPath, rendererPath, cardRendererPath, socialLinksPath, d
 for (const contract of ["portfolio-featured", "portfolio-archive", "media-dialog", "media-dialog-content"]) {
   if (!html.includes(`id="${contract}"`)) fail(`document missing #${contract}`);
 }
-if (!html.includes('type="module" src="/src/main.js"')) fail("document does not load the Vite module entrypoint");
+if (!html.includes('type="module" src="./src/main.js"')) fail("document does not load the repository-relative Vite module entrypoint");
 if (!dataModule.includes('../../js/portfolio-data.js')) fail("data adapter does not retain the canonical media manifest");
 if (!cardRenderer.includes("card.dataset.mediaId")) fail("card renderer does not create the data-media-id archive contract");
 if (!cardRenderer.includes('setAttribute("aria-label"')) fail("card renderer does not create accessible media-control labels");

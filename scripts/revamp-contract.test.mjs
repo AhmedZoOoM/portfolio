@@ -35,6 +35,7 @@ const main = readFileSync(new URL("../src/main.js", import.meta.url), "utf8");
 const componentStyles = readFileSync(new URL("../src/styles/components.css", import.meta.url), "utf8");
 assert.match(html, /aria-label="Verified social profiles"/, "social navigation must stay labeled");
 assert.doesNotMatch(html, />YouTube<|>Instagram<|>Vimeo<|>Behance<|>X</, "social links must render as icons, not visible text");
+assert.match(html, /<script type="module" src="\.\/src\/main\.js"><\/script>/, "the legacy Pages fallback must load the module beneath the repository path");
 assert.match(main, /window\.addEventListener\("load", alignHashAnchor/, "a hash selected before layout settles must be realigned after the load event");
 assert.match(main, /target\.scrollIntoView\(\{ block: "start" \}\)/, "hash realignment must scroll the requested target into view");
 assert.doesNotMatch(componentStyles, /content-visibility\s*:\s*auto/, "archive layout must remain measurable before an anchor below it is selected");
