@@ -19,14 +19,16 @@ export function createMediaDialog() {
     content.replaceChildren();
     if (item.kind === "image") {
       const image = document.createElement("img");
+      image.className = `media-frame media-frame-${item.aspect}`;
       image.src = item.posterUrl;
       image.alt = item.displayTitle;
       content.append(image);
     } else {
       const frame = document.createElement("iframe");
+      frame.className = `media-frame media-frame-${item.aspect}`;
       frame.src = `https://drive.google.com/file/d/${item.driveId}/preview`;
       frame.title = `Video: ${item.displayTitle}`;
-      frame.allow = "fullscreen";
+      frame.allow = "autoplay; fullscreen; picture-in-picture";
       frame.allowFullscreen = true;
       content.append(frame);
     }
