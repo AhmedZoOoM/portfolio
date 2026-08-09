@@ -34,7 +34,8 @@ const bundle = assets.filter((asset) => asset.path.endsWith(".js")).map((asset) 
 const css = assets.filter((asset) => asset.path.endsWith(".css")).map((asset) => asset.text).join("\n");
 assert.match(bundle, /drive\.google\.com\/file\/d\//, "deployed bundle must use the supported Drive preview source");
 assert.match(bundle, /createElement\("iframe"\)/, "deployed bundle must create the supported Drive preview player");
-assert.match(bundle, /Open in Google Drive/, "deployed bundle must retain the external Drive fallback");
-assert.match(css, /media-player-actions/, "deployed stylesheet must include player fallback controls");
+assert.doesNotMatch(bundle, /Open in Google Drive/, "deployed dialog must not duplicate Drive's own open-in-Drive control");
+assert.doesNotMatch(css, /media-player-actions/, "deployed stylesheet must not reserve space for a duplicate Drive action strip");
+assert.match(css, /height:min\(70dvh,600px\)/, "deployed wide and square Drive players must reserve control-safe viewport height");
 
 console.log(`PASS live media deployment: ${pageUrl}`);
