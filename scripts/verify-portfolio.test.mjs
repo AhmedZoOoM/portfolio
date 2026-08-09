@@ -8,6 +8,7 @@ const renderer = readFileSync("js/script.js", "utf8");
 assert.match(verifier, /const MAX_CONCURRENT_REQUESTS = 12;/, "URL audit must cap concurrent requests");
 assert.match(verifier, /const MAX_ATTEMPTS = 4;/, "URL audit must retry rate-limited requests");
 assert.match(verifier, /response\.status === 429/, "URL audit must recognize HTTP 429");
+assert.match(verifier, /response\.status >= 500/, "URL audit must retry transient provider failures");
 assert.match(verifier, /await delay\(/, "URL audit must back off between retry attempts");
 assert.match(verifier, /process\.exit\(process\.exitCode\)/, "verifier must preserve a failing exit status");
 assert.doesNotMatch(verifier, /\["original", item\.originalUrl, item\]/, "Drive view URLs must be validated structurally, not rate-limited as media probes");

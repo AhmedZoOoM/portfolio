@@ -106,7 +106,7 @@ if (!process.exitCode) {
           headers: kind === "stream" ? { Range: "bytes=0-1023" } : undefined,
           signal: AbortSignal.timeout(20000)
         });
-        if (response.status === 429 && attempt < MAX_ATTEMPTS) {
+        if ((response.status === 429 || response.status >= 500) && attempt < MAX_ATTEMPTS) {
           const retryAfter = Number(response.headers.get("retry-after"));
           await delay(Number.isFinite(retryAfter) ? retryAfter * 1000 : attempt * 750);
           continue;
