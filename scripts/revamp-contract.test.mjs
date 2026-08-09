@@ -48,6 +48,11 @@ assert.doesNotMatch(componentStyles, /content-visibility\s*:\s*auto/, "archive l
 assert.match(dialogRenderer, /media-frame-\$\{item\.aspect\}/, "the media dialog must preserve each item's aspect ratio");
 assert.match(dialogRenderer, /autoplay; fullscreen; picture-in-picture/, "the Drive embed must permit user-initiated playback");
 assert.doesNotMatch(dialogRenderer, /createElement\("video"\)/, "the Pages viewer must not use a Drive download endpoint blocked by cross-origin resource policy");
+assert.doesNotMatch(dialogRenderer, /Open in Google Drive/, "the dialog must not duplicate Drive's own open-in-Drive control");
+assert.doesNotMatch(componentStyles, /media-player-actions/, "the dialog must not reserve vertical space for a duplicate Drive action strip");
+assert.match(componentStyles, /#media-dialog-content\s+iframe\.media-frame-landscape,\s*#media-dialog-content\s+iframe\.media-frame-square\s*\{[^}]*height:\s*min\(70dvh,\s*600px\)/, "wide and square Drive players need a control-safe viewport height without affecting image previews");
+assert.match(componentStyles, /#media-dialog-content\s+\.media-frame\s*\{[^}]*max-height:\s*calc\(100dvh\s*-\s*6rem\)/, "Drive controls must fit in phone landscape orientation");
+assert.match(componentStyles, /@media\s*\(orientation:\s*landscape\)\s*and\s*\(max-height:\s*500px\)\s*\{[\s\S]*?\.dialog-bar\s+h2\s*\{[^}]*white-space:\s*nowrap/, "long media titles must not clip the player on short landscape screens");
 assert.doesNotMatch(liveVerifier, /drive\.usercontent\.google\.com/, "the live verifier must validate the supported embedded player path");
 assert.match(componentStyles, /\.media-frame-portrait/, "portrait media requires a viewport-bounded viewer treatment");
 assert.match(componentStyles, /100dvh/, "the viewer must account for mobile browser viewport height");

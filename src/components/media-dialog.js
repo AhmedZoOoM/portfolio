@@ -22,16 +22,6 @@ export function createMediaDialog() {
   close.addEventListener("click", () => dialog.close());
   dialog.addEventListener("close", clear);
 
-  function mediaActions(item) {
-    const actions = makeElement("div", "media-player-actions");
-    const source = makeElement("a", "source-link", "Open in Google Drive");
-    source.href = item.originalUrl;
-    source.target = "_blank";
-    source.rel = "noopener noreferrer";
-    actions.append(source);
-    return actions;
-  }
-
   function showDrivePreview(item) {
     const player = makeElement("div", `media-player media-player-${item.aspect}`);
     const frame = document.createElement("iframe");
@@ -40,7 +30,7 @@ export function createMediaDialog() {
     frame.title = `Google Drive player: ${item.displayTitle}`;
     frame.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media";
     frame.allowFullscreen = true;
-    player.append(frame, mediaActions(item));
+    player.append(frame);
     content.replaceChildren(player);
   }
 
