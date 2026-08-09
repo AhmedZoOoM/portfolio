@@ -6,7 +6,11 @@ const root = resolve(import.meta.dirname, "..");
 const inventoryPath = resolve(root, "data", "drive-inventory.json");
 const manifestPath = resolve(root, "js", "portfolio-data.js");
 const htmlPath = resolve(root, "index.html");
-const scriptPath = resolve(root, "js", "script.js");
+const rendererPath = resolve(root, "src", "main.js");
+const cardRendererPath = resolve(root, "src", "components", "media-card.js");
+const socialLinksPath = resolve(root, "src", "components", "social-links.js");
+const dataModulePath = resolve(root, "src", "data", "portfolio-data.js");
+const stylesheetPath = resolve(root, "src", "styles", "index.css");
 const MAX_CONCURRENT_REQUESTS = 12;
 const MAX_ATTEMPTS = 4;
 const delay = (milliseconds) => new Promise((resolveDelay) => setTimeout(resolveDelay, milliseconds));
@@ -19,7 +23,11 @@ function fail(message) {
 if (!existsSync(inventoryPath)) fail("source inventory missing: data/drive-inventory.json");
 if (!existsSync(manifestPath)) fail("manifest missing: js/portfolio-data.js");
 if (!existsSync(htmlPath)) fail("document missing: index.html");
-if (!existsSync(scriptPath)) fail("renderer missing: js/script.js");
+if (!existsSync(rendererPath)) fail("renderer missing: src/main.js");
+if (!existsSync(cardRendererPath)) fail("card renderer missing: src/components/media-card.js");
+if (!existsSync(socialLinksPath)) fail("social-link renderer missing: src/components/social-links.js");
+if (!existsSync(dataModulePath)) fail("data adapter missing: src/data/portfolio-data.js");
+if (!existsSync(stylesheetPath)) fail("stylesheet entrypoint missing: src/styles/index.css");
 if (process.exitCode) process.exit(process.exitCode);
 
 const inventory = JSON.parse(readFileSync(inventoryPath, "utf8"));
@@ -58,17 +66,21 @@ if (data?.baseline?.expectedMediaCount !== inventoryMedia.length || data?.baseli
 if (new Set(data?.featuredMediaIds || []).size !== 6 || !(data?.featuredMediaIds || []).every((id) => manifestIds.has(id))) fail("featured media IDs must contain six unique manifest IDs");
 
 const html = readFileSync(htmlPath, "utf8");
-const renderer = readFileSync(scriptPath, "utf8");
-for (const file of [htmlPath, scriptPath, manifestPath, resolve(root, "README.md"), resolve(root, "css", "style.css")]) {
+const renderer = readFileSync(rendererPath, "utf8");
+const cardRenderer = readFileSync(cardRendererPath, "utf8");
+const socialLinks = readFileSync(socialLinksPath, "utf8");
+const dataModule = readFileSync(dataModulePath, "utf8");
+for (const file of [htmlPath, rendererPath, cardRendererPath, socialLinksPath, dataModulePath, stylesheetPath, manifestPath, resolve(root, "README.md")]) {
   if (readFileSync(file, "utf8").startsWith("+")) fail(`generated file has an invalid leading +: ${file.replace(root + "/", "")}`);
 }
 for (const contract of ["portfolio-featured", "portfolio-archive", "media-dialog", "media-dialog-content"]) {
   if (!html.includes(`id="${contract}"`)) fail(`document missing #${contract}`);
 }
-if (!html.includes('src="js/portfolio-data.js"') || !html.includes('src="js/script.js"')) fail("document does not load the manifest and renderer");
-if (html.indexOf('js/portfolio-data.js') > html.indexOf('js/script.js')) fail("manifest must load before renderer");
-if (!renderer.includes("data-media-id")) fail("renderer does not create the data-media-id archive contract");
-if (!renderer.includes('setAttribute("aria-label"')) fail("renderer does not create accessible media-control labels");
+if (!html.includes('type="module" src="/src/main.js"')) fail("document does not load the Vite module entrypoint");
+if (!dataModule.includes('../../js/portfolio-data.js')) fail("data adapter does not retain the canonical media manifest");
+if (!cardRenderer.includes("card.dataset.mediaId")) fail("card renderer does not create the data-media-id archive contract");
+if (!cardRenderer.includes('setAttribute("aria-label"')) fail("card renderer does not create accessible media-control labels");
+if (!socialLinks.includes('aria-label')) fail("social links do not expose accessible labels");
 if (!inventoryMedia.every((item) => item.publicViewStatus === "anonymous_preview_verified")) fail("source inventory lacks anonymous preview verification");
 for (const placeholder of ["Project Title", "hello@example.com", "DaVinci Resolve", "Avid Media Composer", "10+ years", "linkedin.com"]) {
   if (html.includes(placeholder) || readFileSync(resolve(root, "README.md"), "utf8").includes(placeholder)) fail(`placeholder or unsupported claim remains: ${placeholder}`);

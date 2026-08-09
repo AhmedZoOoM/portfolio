@@ -1,0 +1,19 @@
+{
+  "name": "ahmed-azzam-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node scripts/verify-portfolio.test.mjs && node scripts/revamp-contract.test.mjs",
+    "verify": "node scripts/verify-portfolio.mjs",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "test:e2e": "node scripts/smoke-test.mjs",
+    "check": "npm run test && npm run build && npm run verify:dist"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}

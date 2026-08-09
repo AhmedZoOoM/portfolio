@@ -14,5 +14,7 @@ assert.doesNotMatch(verifier, /\["original", item\.originalUrl, item\]/, "Drive 
 assert.doesNotMatch(html, /Cairo, Egypt/, "the excluded location must not be published");
 assert.doesNotMatch(renderer, /Video · captions unavailable/, "caption label must not be hard-coded");
 assert.match(renderer, /captionLabel/, "caption label must derive from manifest state");
+assert.match(verifier, /src", "main\.js"/, "the verifier must validate the Vite module entrypoint");
+assert.match(verifier, /src", "components", "media-card\.js"/, "the verifier must validate the Vite card renderer contract");
 
 console.log("PASS rate-limit, privacy, and caption regressions");

@@ -1,5 +1,7 @@
 # Replace all placeholder portfolio content with Ahmed Azzam's complete real-media archive
 
+> **Current implementation note:** Issue [#3](https://github.com/AhmedZoOoM/portfolio/issues/3) supersedes this document’s former dependency-free rendering approach with a Vite UI architecture. Its archive-preservation, verified-media, privacy, and 100% completion requirements remain authoritative.
+
 ## Objective
 
 Replace every placeholder, invented claim, dead link, and fake portfolio item in this GitHub Pages repository with verified information about **Ahmed Azzam** and every publishable media item in the canonical Google Drive folder:

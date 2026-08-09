@@ -567,7 +567,7 @@
       { name: "Behance", url: "https://www.behance.net/AhmedZoOoM" },
       { name: "X", url: "https://x.com/AhmedZoOoM" }
     ],
-    featuredMediaIds: ["1Cz1J0y9WeeBCiWTF-rMeTK_GbPfrz8SN", "1-aKQ0XYCg0QQs-HRzcwntWSWdNTRilVQ", "1XahedVA2AfhI9dL71OwIQHLwB541uw2P", "17AowvP6cMvmD0yhEehTEPM7CKsGh7s2_", "1UeE0bPFDZCmEHz21MBE9fClbU7UpSm9q", "14QDMVIdDJO6jVTzt5PbcrFviXL2-J-r3"],
+    featuredMediaIds: ["17AowvP6cMvmD0yhEehTEPM7CKsGh7s2_", "1-aKQ0XYCg0QQs-HRzcwntWSWdNTRilVQ", "1XahedVA2AfhI9dL71OwIQHLwB541uw2P", "1QuwhZeMIujn7IA9mUAKesgK9XYGYl6Me", "1UeE0bPFDZCmEHz21MBE9fClbU7UpSm9q", "14QDMVIdDJO6jVTzt5PbcrFviXL2-J-r3"],
     projects
   };
 })();

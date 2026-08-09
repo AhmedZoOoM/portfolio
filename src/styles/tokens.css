@@ -1,0 +1,16 @@
+:root {
+  --canvas: #090c10;
+  --panel: #11161d;
+  --panel-raised: #18202a;
+  --line: #2a3541;
+  --text: #edf2f6;
+  --text-muted: #98a6b5;
+  --accent: #55c8f5;
+  --accent-soft: #153746;
+  --focus: #8bdcff;
+  --danger: #ff6b6b;
+  --sans: Archivo, "Arial Narrow", Arial, sans-serif;
+  --arabic: "Noto Sans Arabic", Tahoma, sans-serif;
+  --mono: "SFMono-Regular", Consolas, monospace;
+  --container: min(1280px, calc(100% - 2rem));
+}
