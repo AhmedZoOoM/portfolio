@@ -13,6 +13,12 @@ const openMedia = createMediaDialog();
 const allMedia = portfolioData.projects.flatMap((project) => project.media);
 const mediaById = new Map(allMedia.map((item) => [item.driveId, item]));
 
+function alignHashAnchor() {
+  const target = document.getElementById(window.location.hash.slice(1));
+  if (!target) return;
+  window.requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+}
+
 function renderHero() {
   const heroItem = mediaById.get(portfolioData.site.heroMediaId);
   const poster = document.querySelector("#hero-poster");
@@ -43,3 +49,5 @@ renderSelectedWork();
 renderArchive(portfolioData.projects, openMedia);
 renderProfile();
 renderSocialLinks(portfolioData.socials);
+window.addEventListener("load", alignHashAnchor, { once: true });
+window.addEventListener("hashchange", alignHashAnchor);
