@@ -558,7 +558,7 @@
       education: "Foreign Languages & Translation, English major, Misr University for Science and Technology; GPA 2.7 (B+), Fall 2012/2013.",
       training: "Video Editing, 2K Post Production, 2008.",
       experience: ["Video Editor, Concave Post House (2013–2016)", "Freelance graphics designer since 2006", "Credits represented in the CV include Karam El King, The Shock, commercial editing, a Ramadan 2017 war documentary, The Fisherman, and Melancholia (2018)."],
-      skills: ["Final Cut Pro (expert)", "Adobe Premiere Pro (expert)", "Adobe After Effects (moderate)", "Adobe Photoshop (expert)", "Autodesk Maya, Mudbox, MotionBuilder, and Softimage (moderate)", "Adobe Illustrator and InDesign (novice)", "Voice acting/manipulation, script writing/audio recording, stop motion, and analog-media digitization"]
+      skills: ["Final Cut Pro (expert)", "Adobe Premiere Pro (expert)", "Adobe After Effects (moderate)", "Adobe Photoshop (expert)", "Adobe Illustrator and InDesign (novice)", "Voice acting/manipulation, script writing/audio recording, stop motion, and analog-media digitization"]
     },
     socials: [
       { name: "YouTube", url: "https://www.youtube.com/@AhmedZoOoM" },
@@ -567,7 +567,7 @@
       { name: "Behance", url: "https://www.behance.net/AhmedZoOoM" },
       { name: "X", url: "https://x.com/AhmedZoOoM" }
     ],
-    featuredMediaIds: ["17AowvP6cMvmD0yhEehTEPM7CKsGh7s2_", "1-aKQ0XYCg0QQs-HRzcwntWSWdNTRilVQ", "1XahedVA2AfhI9dL71OwIQHLwB541uw2P", "1QuwhZeMIujn7IA9mUAKesgK9XYGYl6Me", "1UeE0bPFDZCmEHz21MBE9fClbU7UpSm9q", "14QDMVIdDJO6jVTzt5PbcrFviXL2-J-r3"],
+    featuredMediaIds: ["16kl-TkbvU090UNE0v2GnmIBiq5-bbbEt", "1-aKQ0XYCg0QQs-HRzcwntWSWdNTRilVQ", "1XahedVA2AfhI9dL71OwIQHLwB541uw2P", "1QuwhZeMIujn7IA9mUAKesgK9XYGYl6Me", "1UeE0bPFDZCmEHz21MBE9fClbU7UpSm9q", "14QDMVIdDJO6jVTzt5PbcrFviXL2-J-r3"],
     projects
   };
 })();

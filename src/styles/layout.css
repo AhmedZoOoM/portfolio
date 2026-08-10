@@ -9,6 +9,7 @@
 .hero { position: relative; overflow: hidden; min-height: min(760px, calc(100vh - 68px)); display: grid; align-items: center; border-bottom: 1px solid var(--line); }
 .hero::before { content: ""; position: absolute; inset: 8% -8% auto; height: 1px; background: var(--accent); opacity: .45; box-shadow: 0 9rem 0 var(--line), 0 18rem 0 var(--line), 0 27rem 0 var(--line); }
 .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(22rem, 1.1fr); gap: clamp(2rem, 6vw, 7rem); align-items: center; padding-block: clamp(4rem, 10vw, 9rem); }
+.hero-grid > * { min-width: 0; }
 .hero-copy { color: var(--text-muted); max-width: 40rem; font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 .hero-actions, .contact-links, .filters { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; }
 .hero-actions { margin-top: 2rem; }
@@ -30,4 +31,9 @@
 .work-families { display: flex; flex-wrap: wrap; gap: .55rem; list-style: none; padding: 0; margin: 0; }
 .work-families li { border: 1px solid var(--line); padding: .55rem .7rem; color: var(--text-muted); }
 .contact-section { background: var(--panel-raised); }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(16rem, .8fr); grid-template-areas: "copy portrait" "actions portrait"; gap: 2rem clamp(2rem, 7vw, 7rem); align-items: start; }
+.contact-copy { grid-area: copy; }
+.contact-actions { grid-area: actions; }
+.contact-portrait { grid-area: portrait; display: block; width: min(100%, 400px); justify-self: end; border: 1px solid var(--accent); background: var(--canvas); box-shadow: 1rem 1rem 0 var(--accent-soft); }
+.contact-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
 .site-footer { padding-block: 2rem; color: var(--text-muted); font-size: .86rem; }

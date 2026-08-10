@@ -94,7 +94,7 @@ Publish these verified professional facts:
 - Experience: Video Editor at Concave Post House, 2013–2016
 - Credits/experience represented in the CV: Karam El King, The Shock, commercial editing, a Ramadan 2017 war documentary, The Fisherman, and Melancholia (2018)
 - Freelance graphics design since 2006
-- Verified software/creative skills at their stated levels: Final Cut Pro, Adobe Premiere Pro, Adobe After Effects, Adobe Photoshop, Autodesk Maya, Mudbox, MotionBuilder, Softimage, Adobe Illustrator, and Adobe InDesign; voice acting/manipulation, script writing/audio recording, stop motion, and analog-media digitization
+- Verified software/creative skills at their stated levels: Final Cut Pro, Adobe Premiere Pro, Adobe After Effects, Adobe Photoshop, Adobe Illustrator, and Adobe InDesign; voice acting/manipulation, script writing/audio recording, stop motion, and analog-media digitization
 
 Do **not** publish Ahmed's birth date, street/home address, marital status, military status, or the raw CV file. Do not infer job titles, awards, client relationships, dates, or skill levels beyond the CV and media evidence.
 
@@ -216,16 +216,7 @@ The renderer must produce:
 - `#media-dialog` and `#media-dialog-content` for the native viewer
 - A live result count that reports filtered and total media counts
 
-The six initial featured items are:
-
-1. `The Fisherman_Final.mp4`
-2. `برنامج الصدمة - عماله الاطفال`
-3. `CIB PARTY.mp4`
-4. `Enty episode 1`
-5. `Comparison Trap.mp4`
-6. The first ADIB Egypt reel in source order
-
-Each featured item also remains in the complete archive and counts once by Drive ID.
+The canonical six-item sequence lives in `js/portfolio-data.js` under `featuredMediaIds`; do not duplicate it in prose. Episode 3 leads the sequence, and every featured item also remains in the complete archive and counts once by Drive ID.
 
 ## Design direction: editor's light table
 
