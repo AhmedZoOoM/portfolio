@@ -10,7 +10,9 @@
   .media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 620px) {
-  .nav-cta { margin-left: auto; }
+  .brand { flex-basis: 100%; }
+  .theme-toggle { margin-left: auto; }
+  .nav-cta { margin-left: 0; }
   .section { scroll-margin-top: 12rem; }
   .section-heading { display: block; }
   .featured-grid, .media-grid { grid-template-columns: 1fr; }

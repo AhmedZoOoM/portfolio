@@ -67,6 +67,29 @@ async function assertDynamicPortfolio(page) {
   }
 }
 
+async function assertAlignedPhoneHeader(page) {
+  const geometry = await page.evaluate(() => {
+    const box = (selector) => {
+      const { x, y, width, height, right, bottom } = document.querySelector(selector).getBoundingClientRect();
+      return { x, y, width, height, right, bottom };
+    };
+
+    return {
+      brand: box(".brand"),
+      navigation: box(".nav"),
+      toggle: box("#theme-toggle"),
+      cta: box(".nav-cta"),
+      overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth
+    };
+  });
+
+  expect(geometry.toggle.y).toBeCloseTo(geometry.cta.y, 0);
+  expect(geometry.cta.x - geometry.toggle.right).toBeCloseTo(16, 0);
+  expect(geometry.cta.right).toBeCloseTo(geometry.navigation.right, 0);
+  expect(geometry.toggle.y - geometry.brand.bottom).toBeCloseTo(16, 0);
+  expect(geometry.overflow).toBeLessThanOrEqual(1);
+}
+
 test("deployed portfolio derives archive, filters, and player from live media", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await assertDynamicPortfolio(page);
@@ -97,7 +120,9 @@ test("deployed portfolio keeps dark mode by default and persists an explicit lig
 test("deployed portfolio remains usable on a phone viewport", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await assertDynamicPortfolio(page);
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-  expect(overflow).toBeLessThanOrEqual(1);
+  await assertAlignedPhoneHeader(page);
   await expect(page.getByRole("link", { name: "Discuss a project" })).toBeVisible();
+
+  await page.setViewportSize({ width: 320, height: 844 });
+  await assertAlignedPhoneHeader(page);
 });
