@@ -18,7 +18,7 @@ assert.match(archive, /filters\.replaceChildren\(\)/, "archive filters must be i
 assert.match(archive, /archive-empty/, "an empty Drive source must render a named empty state");
 assert.match(cards, /media-visual-fallback/, "failed Drive thumbnails must expose a readable fallback");
 assert.match(main, /hero-preview-fallback/, "failed hero thumbnails must expose a readable fallback");
-assert.match(layout, /featured-grid[^}]*data-aspect="portrait"[\s\S]*aspect-ratio:\s*4\s*\/\s*3/, "portrait selected-work cards must use a compact editorial crop");
+assert.doesNotMatch(layout, /featured-grid[^}]*data-aspect="portrait"/, "selected portrait cards must preserve the manifest ratio without an editorial crop");
 const responsive = readFileSync("src/styles/responsive.css", "utf8");
 assert.doesNotMatch(responsive, /featured-grid\s+\.media-card:first-child\s+\.media-visual\s+img/, "mobile rules must not override the selected portrait crop");
 assert.match(archive, /podcast:\s*"Podcast"/, "podcast filters must have a human-readable label");

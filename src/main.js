@@ -5,7 +5,9 @@ import { renderArchive } from "./components/archive.js";
 import { createMediaCard } from "./components/media-card.js";
 import { createMediaDialog } from "./components/media-dialog.js";
 import { renderSocialLinks } from "./components/social-links.js";
+import { initializeTheme } from "./components/theme-toggle.js";
 
+initializeTheme();
 const openMedia = createMediaDialog();
 const allMedia = portfolioData.projects.flatMap((project) => project.media);
 const mediaById = new Map(allMedia.map((item) => [item.driveId, item]));

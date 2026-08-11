@@ -15,6 +15,5 @@
   .section-heading { display: block; }
   .featured-grid, .media-grid { grid-template-columns: 1fr; }
   .featured-grid .media-card:first-child { grid-column: auto; }
-  .media-card[data-aspect="portrait"] .media-visual img { aspect-ratio: 4 / 5; }
   .timeline-track { grid-template-columns: repeat(2, 1fr); }
 }
