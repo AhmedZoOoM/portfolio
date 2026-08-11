@@ -1,11 +1,32 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 
 const workflow = readFileSync(".github/workflows/sync-drive-media.yml", "utf8");
 const deploy = readFileSync(".github/workflows/deploy-pages.yml", "utf8");
 const e2e = readFileSync("tests/portfolio.e2e.spec.mjs", "utf8");
 const audit = JSON.parse(readFileSync("data/drive-sync-audit.json", "utf8"));
 const isValidAuditMonth = (value) => value === null || /^\d{4}-(?:0[1-9]|1[0-2])$/.test(value);
+const expectedActionVersions = new Map([
+  ["checkout", { version: "v7", count: 3 }],
+  ["setup-node", { version: "v7", count: 3 }],
+  ["configure-pages", { version: "v6", count: 1 }],
+  ["deploy-pages", { version: "v5", count: 1 }],
+  ["upload-artifact", { version: "v7", count: 1 }],
+]);
+const actionCounts = new Map([...expectedActionVersions.keys()].map((action) => [action, 0]));
+
+for (const filename of readdirSync(".github/workflows").filter((name) => /\.ya?ml$/.test(name))) {
+  const contents = readFileSync(`.github/workflows/${filename}`, "utf8");
+  for (const match of contents.matchAll(/^\s*(?:-\s+)?uses:\s*["']?actions\/(checkout|setup-node|configure-pages|deploy-pages|upload-artifact)@(v\d+)["']?\s*(?:#.*)?$/gm)) {
+    const [, action, version] = match;
+    assert.equal(version, expectedActionVersions.get(action).version, `${filename} must use actions/${action}@${expectedActionVersions.get(action).version}`);
+    actionCounts.set(action, actionCounts.get(action) + 1);
+  }
+}
+
+for (const [action, expectation] of expectedActionVersions) {
+  assert.equal(actionCounts.get(action), expectation.count, `workflow inventory must contain ${expectation.count} actions/${action} reference(s)`);
+}
 
 assert.match(workflow, /cron:\s*["']17 0 \* \* \*["']/, "Drive synchronization must run nightly away from the top of the hour");
 assert.match(workflow, /workflow_dispatch:/, "Drive synchronization must remain manually runnable");
