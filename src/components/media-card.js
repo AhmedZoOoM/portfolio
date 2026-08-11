@@ -21,7 +21,12 @@ export function createMediaCard(item, openMedia, { featured = false } = {}) {
   image.alt = item.displayTitle;
   image.loading = featured ? "eager" : "lazy";
   image.decoding = "async";
-  visual.append(image, make("span", "play-mark", "Play"));
+  image.addEventListener("error", () => {
+    image.hidden = true;
+    visual.classList.add("media-visual-fallback");
+    visual.append(make("span", "media-fallback", `${item.kind === "image" ? "Image" : "Video"} preview unavailable`));
+  }, { once: true });
+  visual.append(image);
 
   const copy = make("span", "card-copy");
   copy.dir = item.dir;

@@ -5,7 +5,9 @@
 .media-visual img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .25s ease; }
 .media-card[data-aspect="portrait"] .media-visual img { aspect-ratio: 9 / 16; }
 .media-card:hover img { transform: scale(1.025); }
-.play-mark { position: absolute; left: .75rem; bottom: .75rem; background: var(--canvas); border: 1px solid var(--accent); color: var(--text); padding: .28rem .48rem; font: .68rem var(--mono); text-transform: uppercase; }
+.media-visual-fallback { display: grid; place-items: center; aspect-ratio: 16 / 9; }
+.media-card[data-aspect="portrait"] .media-visual-fallback { aspect-ratio: 9 / 16; }
+.media-fallback { max-width: 14rem; padding: 1rem; color: var(--text-muted); font: .72rem/1.5 var(--mono); text-align: center; text-transform: uppercase; letter-spacing: .08em; }
 .card-copy { display: grid; gap: .25rem; padding: 1rem; }
 .card-title { font-size: 1.05rem; line-height: 1.25; }
 .card-links { padding: 0 1rem 1rem; }
@@ -13,6 +15,7 @@
 .filter { border: 1px solid var(--line); background: transparent; padding: .6rem .8rem; color: var(--text); cursor: pointer; }
 .filter[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--text); }
 .archive-groups { display: grid; gap: .8rem; margin-top: 2rem; }
+.archive-empty { grid-column: 1 / -1; margin: 0; border: 1px dashed var(--line); padding: 1.25rem; color: var(--text-muted); }
 .project-drawer { border: 1px solid var(--line); background: var(--panel); }
 .project-drawer[open] { border-color: var(--accent); }
 .project-drawer summary { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; padding: 1rem; cursor: pointer; list-style: none; }

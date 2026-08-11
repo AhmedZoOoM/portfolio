@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "sync:drive": "node scripts/sync-drive-media.mjs",
     "sync:drive:check": "node scripts/sync-drive-media.mjs --check",
-    "test": "node scripts/sync-drive-media.test.mjs && node scripts/verify-portfolio.test.mjs && node scripts/revamp-contract.test.mjs && node scripts/media-dialog.test.mjs && node scripts/portrait-verifiers.test.mjs",
+    "test": "node scripts/sync-drive-media.test.mjs && node scripts/ui-polish.test.mjs && node scripts/verify-portfolio.test.mjs && node scripts/revamp-contract.test.mjs && node scripts/media-dialog.test.mjs && node scripts/portrait-verifiers.test.mjs",
     "verify": "node scripts/verify-portfolio.mjs",
     "verify:live": "node scripts/verify-live-media.mjs",
     "verify:dist": "node scripts/verify-dist.mjs",
