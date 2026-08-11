@@ -88,6 +88,7 @@ sequenceDiagram
 ```
 
 - The API key is read only from the repository secret `GOOGLE_DRIVE_API_KEY` and is restricted in Google Cloud to the Google Drive API.
+- Repository owners must enable **Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests**. GitHub disables this capability by default for new personal repositories; see [Managing GitHub Actions settings for a repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository).
 - The sync job has scoped content and pull-request permissions. Pages deployment and failure reporting use separate least-privilege jobs.
 - The first healthy no-content-change run each month updates `data/drive-sync-audit.json`, producing a small audit PR so scheduled automation remains observable.
 - Repeated failures update one open `[automation] Nightly Drive sync failed` issue instead of creating duplicates.
