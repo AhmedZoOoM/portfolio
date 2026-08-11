@@ -12,12 +12,13 @@ const expectedActionVersions = new Map([
   ["configure-pages", { version: "v6", count: 1 }],
   ["deploy-pages", { version: "v5", count: 1 }],
   ["upload-artifact", { version: "v7", count: 1 }],
+  ["upload-pages-artifact", { version: "v5", count: 1 }],
 ]);
 const actionCounts = new Map([...expectedActionVersions.keys()].map((action) => [action, 0]));
 
 for (const filename of readdirSync(".github/workflows").filter((name) => /\.ya?ml$/.test(name))) {
   const contents = readFileSync(`.github/workflows/${filename}`, "utf8");
-  for (const match of contents.matchAll(/^\s*(?:-\s+)?uses:\s*["']?actions\/(checkout|setup-node|configure-pages|deploy-pages|upload-artifact)@(v\d+)["']?\s*(?:#.*)?$/gm)) {
+  for (const match of contents.matchAll(/^\s*(?:-\s+)?uses:\s*["']?actions\/(checkout|setup-node|configure-pages|deploy-pages|upload-artifact|upload-pages-artifact)@(v\d+)["']?\s*(?:#.*)?$/gm)) {
     const [, action, version] = match;
     assert.equal(version, expectedActionVersions.get(action).version, `${filename} must use actions/${action}@${expectedActionVersions.get(action).version}`);
     actionCounts.set(action, actionCounts.get(action) + 1);
