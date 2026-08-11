@@ -1,4 +1,5 @@
 :root {
+  color-scheme: dark;
   --canvas: #090c10;
   --panel: #11161d;
   --panel-raised: #18202a;
@@ -9,8 +10,25 @@
   --accent-soft: #153746;
   --focus: #8bdcff;
   --danger: #ff6b6b;
+  --header: rgb(9 12 16 / .92);
+  --accent-contrast: #090c10;
   --sans: Archivo, "Arial Narrow", Arial, sans-serif;
   --arabic: "Noto Sans Arabic", Tahoma, sans-serif;
   --mono: "SFMono-Regular", Consolas, monospace;
   --container: min(1280px, calc(100% - 2rem));
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --canvas: #f4f7f9;
+  --panel: #ffffff;
+  --panel-raised: #e7eef3;
+  --line: #aebdc8;
+  --text: #15202b;
+  --text-muted: #526473;
+  --accent: #006f9e;
+  --accent-soft: #d7edf6;
+  --focus: #005f87;
+  --header: rgb(244 247 249 / .92);
+  --accent-contrast: #ffffff;
 }

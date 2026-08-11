@@ -23,13 +23,12 @@ export function renderArchive(projects, openMedia) {
   function render() {
     archive.replaceChildren();
     let shown = 0;
-    projects.forEach((project, index) => {
+    projects.forEach((project) => {
       const media = project.media.filter((item) => activeCategory === "all" || item.category === activeCategory);
       if (!media.length) return;
       shown += media.length;
       const drawer = document.createElement("details");
       drawer.className = "project-drawer";
-      drawer.open = activeCategory !== "all" || index === 0;
       drawer.dataset.category = project.category;
       const summary = document.createElement("summary");
       const track = document.createElement("span");

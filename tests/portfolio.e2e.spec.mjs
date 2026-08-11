@@ -13,6 +13,7 @@ async function assertDynamicPortfolio(page) {
   });
   const total = manifest.length;
   await expect(cards).toHaveCount(total);
+  await expect(page.locator("#portfolio-archive .project-drawer[open]")).toHaveCount(0);
   if (total === 0) {
     await expect(empty).toBeVisible();
     await expect(page.locator("#media-count")).toContainText("0 / 0");
@@ -30,12 +31,17 @@ async function assertDynamicPortfolio(page) {
     const expected = category === "all" ? total : categories.filter((value) => value === category).length;
     await filter.click();
     await expect(page.locator("#media-count")).toContainText(`${expected} / ${total}`);
+    await expect(page.locator("#portfolio-archive .project-drawer[open]")).toHaveCount(0);
   }
 
   const videoCard = page.locator('#portfolio-archive [data-kind="video"]').first();
   if (await videoCard.count()) {
     const category = await videoCard.getAttribute("data-category");
     await page.locator(`#filters button[data-category="${category}"]`).click();
+    const videoDrawer = videoCard.locator("xpath=ancestor::details[1]");
+    await expect(videoDrawer).toHaveCount(1);
+    await videoDrawer.locator("summary").click();
+    await expect(videoCard.locator(".media-open")).toBeVisible();
     await videoCard.locator(".media-open").click();
     const dialog = page.locator("#media-dialog");
     await expect(dialog).toBeVisible();
@@ -49,6 +55,10 @@ async function assertDynamicPortfolio(page) {
   if (await imageCard.count()) {
     const category = await imageCard.getAttribute("data-category");
     await page.locator(`#filters button[data-category="${category}"]`).click();
+    const imageDrawer = imageCard.locator("xpath=ancestor::details[1]");
+    await expect(imageDrawer).toHaveCount(1);
+    await imageDrawer.locator("summary").click();
+    await expect(imageCard.locator(".media-open")).toBeVisible();
     await imageCard.locator(".media-open").click();
     const dialog = page.locator("#media-dialog");
     await expect(dialog.locator("iframe")).toHaveCount(0);
@@ -60,6 +70,20 @@ async function assertDynamicPortfolio(page) {
 test("deployed portfolio derives archive, filters, and player from live media", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await assertDynamicPortfolio(page);
+});
+
+test("deployed portfolio keeps dark mode by default and persists an explicit light choice", async ({ page }) => {
+  await page.goto("./", { waitUntil: "networkidle" });
+  const root = page.locator("html");
+  const toggle = page.getByRole("button", { name: "Light mode" });
+  await expect(root).toHaveAttribute("data-theme", "dark");
+  await expect(toggle).toBeEnabled();
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  await toggle.click();
+  await expect(root).toHaveAttribute("data-theme", "light");
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await page.reload({ waitUntil: "networkidle" });
+  await expect(root).toHaveAttribute("data-theme", "light");
 });
 
 test("deployed portfolio remains usable on a phone viewport", async ({ page }) => {

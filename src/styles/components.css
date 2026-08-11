@@ -2,11 +2,12 @@
 .media-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 .media-open { display: block; width: 100%; padding: 0; border: 0; background: transparent; text-align: left; cursor: pointer; }
 .media-visual { position: relative; display: block; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--panel-raised); }
-.media-visual img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .25s ease; }
+.media-visual img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
 .media-card[data-aspect="portrait"] .media-visual img { aspect-ratio: 9 / 16; }
-.media-card:hover img { transform: scale(1.025); }
+.media-card[data-aspect="square"] .media-visual img { aspect-ratio: 1 / 1; }
 .media-visual-fallback { display: grid; place-items: center; aspect-ratio: 16 / 9; }
 .media-card[data-aspect="portrait"] .media-visual-fallback { aspect-ratio: 9 / 16; }
+.media-card[data-aspect="square"] .media-visual-fallback { aspect-ratio: 1 / 1; }
 .media-fallback { max-width: 14rem; padding: 1rem; color: var(--text-muted); font: .72rem/1.5 var(--mono); text-align: center; text-transform: uppercase; letter-spacing: .08em; }
 .card-copy { display: grid; gap: .25rem; padding: 1rem; }
 .card-title { font-size: 1.05rem; line-height: 1.25; }
