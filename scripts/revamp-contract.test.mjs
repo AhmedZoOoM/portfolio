@@ -210,7 +210,7 @@ assert.deepEqual(
   },
   "portrait source, accessibility, responsive order, and deployment checks must match the approved contract"
 );
-assert.match(dataAdapter, /heroMediaId: "16kl-TkbvU090UNE0v2GnmIBiq5-bbbEt"/, "episode 3 must power the hero player");
+assert.match(dataAdapter, /heroMediaId: sourceData\.heroMediaId/, "the generated current hero must power the hero player");
 assert.doesNotMatch(dataAdapter, /heroMediaId: "17AowvP6cMvmD0yhEehTEPM7CKsGh7s2_"/, "episode 1 must no longer power the hero player");
 assert.match(layoutStyles, /\.hero-grid\s*>\s*\*\s*\{[^}]*min-width:\s*0/, "hero columns must be allowed to shrink within phone viewports");
 assert.match(mobile900Styles, /\.section\s*\{[^}]*scroll-margin-top:\s*8rem/, "tablet anchor targets must clear the wrapped sticky navigation");

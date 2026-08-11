@@ -9,6 +9,7 @@ export function createMediaCard(item, openMedia, { featured = false } = {}) {
   const card = make("article", `media-card${featured ? " media-card-featured" : ""}`);
   card.dataset.mediaId = item.driveId;
   card.dataset.category = item.category;
+  card.dataset.kind = item.kind;
   card.dataset.variantGroup = item.variantGroup || "";
   card.dataset.aspect = item.aspect;
 
@@ -21,7 +22,12 @@ export function createMediaCard(item, openMedia, { featured = false } = {}) {
   image.alt = item.displayTitle;
   image.loading = featured ? "eager" : "lazy";
   image.decoding = "async";
-  visual.append(image, make("span", "play-mark", "Play"));
+  image.addEventListener("error", () => {
+    image.hidden = true;
+    visual.classList.add("media-visual-fallback");
+    visual.append(make("span", "media-fallback", `${item.kind === "image" ? "Image" : "Video"} preview unavailable`));
+  }, { once: true });
+  visual.append(image);
 
   const copy = make("span", "card-copy");
   copy.dir = item.dir;

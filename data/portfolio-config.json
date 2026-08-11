@@ -1,0 +1,110 @@
+{
+  "sourceFolderId": "1M-fwHszneqa2h0xoZhImtVKoBZdmAMP9",
+  "featuredLimit": 6,
+  "heroMediaId": "16kl-TkbvU090UNE0v2GnmIBiq5-bbbEt",
+  "featuredMediaIds": [
+    "16kl-TkbvU090UNE0v2GnmIBiq5-bbbEt",
+    "1-aKQ0XYCg0QQs-HRzcwntWSWdNTRilVQ",
+    "1XahedVA2AfhI9dL71OwIQHLwB541uw2P",
+    "1QuwhZeMIujn7IA9mUAKesgK9XYGYl6Me",
+    "1UeE0bPFDZCmEHz21MBE9fClbU7UpSm9q",
+    "14QDMVIdDJO6jVTzt5PbcrFviXL2-J-r3"
+  ],
+  "folderMappings": {
+    "Drive root": {
+      "id": "selected-edits",
+      "title": "Selected edits",
+      "category": "commercial",
+      "summary": "Editorial, commercial, showreel, and making-of work supplied in the source archive."
+    },
+    "Automatest": {
+      "id": "automatest",
+      "title": "Automatest",
+      "category": "podcast",
+      "categoryLocked": true,
+      "summary": "Technical podcast edits and accompanying stills."
+    },
+    "8Dominos": {
+      "id": "8dominos",
+      "title": "8Dominos",
+      "category": "commercial",
+      "summary": "Long-form campaign edits."
+    },
+    "8Dominos_Reels": {
+      "id": "8dominos-reels",
+      "title": "8Dominos reels",
+      "category": "social",
+      "summary": "Vertical social edits from the 8Dominos collection."
+    },
+    "Nahark Eswed Reels": {
+      "id": "nahark-eswed-reels",
+      "title": "Nahark Eswed reels",
+      "category": "social",
+      "summary": "Vertical social edits from the Nahark Eswed collection."
+    },
+    "ADIB EGYPT REELS": {
+      "id": "adib-egypt-reels",
+      "title": "ADIB Egypt reels",
+      "category": "social",
+      "summary": "Vertical social edits supplied in the ADIB Egypt collection."
+    },
+    "Enty Asl El Hekaya": {
+      "id": "enty-asl-el-hekaya",
+      "title": "Enty Asl El Hekaya",
+      "category": "podcast",
+      "categoryLocked": true,
+      "aliases": ["Enty Asl El Hekaya - أنتى أصل الحكاية"],
+      "summary": "Podcast episode edits."
+    },
+    "The Shock": {
+      "id": "the-shock",
+      "title": "The Shock",
+      "category": "television",
+      "aliases": ["The Shock - برنامج الصدمة"],
+      "summary": "Programme segments from برنامج الصدمة."
+    },
+    "Instagram Reels": {
+      "id": "instagram-reels",
+      "title": "Instagram reels",
+      "category": "social",
+      "summary": "Short-form social edits."
+    }
+  },
+  "categoryInference": [
+    { "pattern": "podcast|بودكاست", "category": "podcast" },
+    { "pattern": "reels?", "category": "social" },
+    { "pattern": "showreel", "category": "showreel" },
+    { "pattern": "bts|making[ _-]?of", "category": "making-of" },
+    { "pattern": "shock|episode|الحلقة|برنامج", "category": "television" },
+    { "pattern": "commercial|campaign|adib|cib|dominos", "category": "commercial" }
+  ],
+  "profile": {
+    "name": "Ahmed Azzam",
+    "fullName": "Ahmed Mohamed Ali Azzam",
+    "handle": "AhmedZoOoM",
+    "email": "zomation@gmail.com",
+    "phone": "+20 102 060 1600",
+    "education": "Foreign Languages & Translation, English major, Misr University for Science and Technology; GPA 2.7 (B+), Fall 2012/2013.",
+    "training": "Video Editing, 2K Post Production, 2008.",
+    "experience": [
+      "Video Editor, Concave Post House (2013–2016)",
+      "Freelance graphics designer since 2006",
+      "Credits represented in the CV include Karam El King, The Shock, commercial editing, a Ramadan 2017 war documentary, The Fisherman, and Melancholia (2018)."
+    ],
+    "skills": [
+      "Final Cut Pro (expert)",
+      "Adobe Premiere Pro (expert)",
+      "Adobe After Effects (moderate)",
+      "Adobe Photoshop (expert)",
+      "Adobe Illustrator and InDesign (novice)",
+      "Voice acting/manipulation, script writing/audio recording, stop motion, and analog-media digitization"
+    ]
+  },
+  "socials": [
+    { "name": "YouTube", "url": "https://www.youtube.com/@AhmedZoOoM" },
+    { "name": "Instagram", "url": "https://www.instagram.com/ahmedzooom/" },
+    { "name": "Vimeo", "url": "https://vimeo.com/ahmedzooom" },
+    { "name": "Behance", "url": "https://www.behance.net/AhmedZoOoM" },
+    { "name": "X", "url": "https://x.com/AhmedZoOoM" }
+  ]
+}

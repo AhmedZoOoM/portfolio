@@ -1,0 +1,109 @@
+name: Sync Google Drive media
+
+on:
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: drive-media-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      changed: ${{ steps.decide.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Synchronize public Drive media
+        env:
+          GOOGLE_DRIVE_API_KEY: ${{ secrets.GOOGLE_DRIVE_API_KEY }}
+        run: npm run sync:drive
+      - name: Record monthly healthy audit
+        shell: bash
+        run: |
+          current_month="$(date -u +%Y-%m)"
+          recorded_month="$(node -p "require('./data/drive-sync-audit.json').lastHealthyMonth")"
+          if [[ "$recorded_month" != "$current_month" ]]; then
+            node -e "const fs=require('fs'); fs.writeFileSync('data/drive-sync-audit.json', JSON.stringify({lastHealthyMonth: process.argv[1]}, null, 2) + '\n')" "$current_month"
+          fi
+      - run: npm run check
+      - run: npm run verify
+      - id: decide
+        shell: bash
+        run: |
+          if git diff --quiet -- data/drive-inventory.json data/drive-sync-audit.json js/portfolio-data.js; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Open and merge validated sync PR
+        if: steps.decide.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          branch="automation/drive-sync-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add data/drive-inventory.json data/drive-sync-audit.json js/portfolio-data.js
+          git commit -m "chore: sync portfolio media from Drive"
+          git push --set-upstream origin "$branch"
+          pr_url="$(gh pr create --base main --head "$branch" --title "chore: sync portfolio media from Drive" --body "Automated public Google Drive reconciliation. Generated data passed unit, build, distribution, and provider verification before this PR was created.")"
+          gh pr merge "$pr_url" --merge --delete-branch
+          for attempt in {1..60}; do
+            read -r state merge_sha < <(gh pr view "$pr_url" --json state,mergeCommit --jq '[.state, .mergeCommit.oid // ""] | @tsv')
+            if [[ "$state" == "MERGED" && -n "$merge_sha" ]]; then
+              git fetch origin main
+              if git merge-base --is-ancestor "$merge_sha" origin/main; then
+                exit 0
+              fi
+            fi
+            sleep 10
+          done
+          echo "Timed out waiting for the generated PR mergeCommit to reach origin/main" >&2
+          exit 1
+
+  deploy:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-pages.yml
+
+  report-failure:
+    needs: [sync, deploy]
+    if: ${{ always() && (needs.sync.result == 'failure' || needs.deploy.result == 'failure') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Open or update the sync failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          title="[automation] Nightly Drive sync failed"
+          run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title $title" --json number --jq '.[0].number // empty')"
+          if [[ -n "$issue" ]]; then
+            gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body "The Drive sync or final deployment failed again: $run_url"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "The Drive sync or final deployment failed: $run_url"
+          fi

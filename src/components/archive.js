@@ -7,7 +7,9 @@ const labels = {
   showreel: "Showreel",
   social: "Social / reels",
   "making-of": "Making-of",
-  stills: "Stills"
+  stills: "Stills",
+  podcast: "Podcast",
+  other: "Other"
 };
 
 export function renderArchive(projects, openMedia) {
@@ -16,6 +18,7 @@ export function renderArchive(projects, openMedia) {
   const count = document.querySelector("#media-count");
   const allMedia = projects.flatMap((project) => project.media);
   let activeCategory = "all";
+  filters.replaceChildren();
 
   function render() {
     archive.replaceChildren();
@@ -48,7 +51,12 @@ export function renderArchive(projects, openMedia) {
       archive.append(drawer);
     });
     count.textContent = `${shown} / ${allMedia.length} works`;
-    if (!shown) archive.append(Object.assign(document.createElement("p"), { textContent: "No work matches this track." }));
+    if (!shown) {
+      const empty = document.createElement("p");
+      empty.className = "archive-empty";
+      empty.textContent = allMedia.length ? "No work matches this track." : "No media is currently available. The archive will refresh after the next Drive sync.";
+      archive.append(empty);
+    }
   }
 
   const categories = ["all", ...new Set(allMedia.map((item) => item.category))];
@@ -56,6 +64,7 @@ export function renderArchive(projects, openMedia) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "filter";
+    button.dataset.category = category;
     button.textContent = labels[category] || category;
     button.setAttribute("aria-pressed", String(category === activeCategory));
     button.addEventListener("click", () => {
