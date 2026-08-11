@@ -1,12 +1,12 @@
 # Contributing to the portfolio
 
-Use one focused change stream at a time. This portfolio’s central rule is preservation: visual refreshes may change hierarchy and presentation, but must not remove a verified work item.
+Use one focused change stream at a time. The central rule is exact reconciliation: the generated inventory, generated manifest, and rendered archive must match the current supported public Drive descendants.
 
 ## Sequential change flow
 
 ```mermaid
 flowchart LR
-  A[Update verified metadata] --> B[Run fast tests]
+  A[Update config or source Drive] --> B[Run the generator]
   B --> C[Build Vite site]
   C --> D[Validate output and Drive URLs]
   D --> E[Review pull request]
@@ -14,9 +14,9 @@ flowchart LR
   F --> G[Deploy with GitHub Pages]
 ```
 
-1. Make the smallest appropriate data or UI change.
-2. If media changes, update `data/drive-inventory.json` and `js/portfolio-data.js` together.
-3. Preserve the invariant that every inventory Drive ID appears exactly once in the manifest and archive.
+1. Make the smallest appropriate configuration, Drive, or UI change.
+2. Generate media files with `npm run sync:drive`; never edit `data/drive-inventory.json` or `js/portfolio-data.js` by hand.
+3. Preserve exact equality between current supported Drive IDs, inventory IDs, manifest IDs, and rendered archive IDs.
 4. Run `npm run check`; run `npm run verify` before merging changes that touch content or media URLs.
 5. Confirm keyboard operation, dialog focus return, reduced-motion behavior, and mobile layout in a browser.
 6. Merge through a pull request. The Pages workflow deploys `main`.
@@ -41,4 +41,4 @@ npm run verify
 
 ## Deployment
 
-GitHub Pages is deployed from the Actions workflow in `.github/workflows/deploy-pages.yml`. The `vite.config.js` `base` value must remain `/portfolio/` unless the Pages URL itself is intentionally changed. Deployment never writes to the repository’s source branch; it uploads the immutable `dist/` build artifact.
+GitHub Pages is deployed from `.github/workflows/deploy-pages.yml`. Nightly media reconciliation is owned by `.github/workflows/sync-drive-media.yml`, which opens and merges a scoped generated-data PR before calling the reusable Pages workflow. The `vite.config.js` `base` value must remain `/portfolio/` unless the Pages URL itself is intentionally changed. Deployment uploads the immutable `dist/` build artifact and finishes with live Playwright acceptance.
