@@ -39,8 +39,17 @@ assert.match(
 assert.doesNotMatch(layout, /featured-grid[^}]*data-aspect="portrait"/, "selected portrait thumbnails must not be cropped into a featured-card ratio");
 assert.doesNotMatch(responsive, /data-aspect="portrait"/, "phone layouts must preserve portrait media's 9:16 ratio");
 
-assert.match(html, /<button id="theme-toggle"[^>]*aria-pressed="false"[^>]*>Light mode<\/button>/, "the header must expose a stable, accessible light-mode toggle");
-assert.doesNotMatch(html.match(/<button id="theme-toggle"[^>]*>/)?.[0] || "", /\b(?:disabled|hidden|inert|aria-hidden)\b/, "the light-mode toggle must remain operable and exposed to assistive technology");
+const themeToggleMarkup = html.match(/<button id="theme-toggle"[\s\S]*?<\/button>/)?.[0] || "";
+assert.match(themeToggleMarkup, /aria-label="Switch to light mode"/, "the default icon must describe its light-mode action");
+assert.doesNotMatch(themeToggleMarkup, /aria-pressed=/, "an action-labelled icon must not also expose conflicting toggle-state semantics");
+assert.doesNotMatch(themeToggleMarkup, />\s*Light mode\s*</, "the compact icon control must not render the old text label");
+assert.equal((themeToggleMarkup.match(/<svg\b/g) || []).length, 2, "the toggle must include distinct sun and moon icons");
+assert.equal((themeToggleMarkup.match(/aria-hidden="true"/g) || []).length, 2, "decorative icons must stay out of the accessibility tree");
+assert.doesNotMatch(themeToggleMarkup.match(/<button[^>]*>/)?.[0] || "", /\b(?:disabled|hidden|inert|aria-hidden)\b/, "the theme toggle must remain operable and exposed to assistive technology");
+assert.match(layout, /\.theme-toggle\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s, "the icon control must keep the existing 44px pointer target without the text-button width");
+assert.match(layout, /\.theme-toggle-icon\s*\{[^}]*stroke:\s*currentColor;/s, "the outline icons must inherit the UI theme color");
+assert.match(layout, /:root\[data-theme="light"\][^{]*\.theme-toggle-icon--sun\s*\{[^}]*display:\s*none;/s, "light mode must hide the sun action icon");
+assert.match(layout, /:root\[data-theme="light"\][^{]*\.theme-toggle-icon--moon\s*\{[^}]*display:\s*block;/s, "light mode must show the moon action icon");
 assert.match(main, /initializeTheme\(\)/, "theme state must initialize before the rest of the page interaction");
 assert.match(tokens, /:root\s*\{[^}]*color-scheme:\s*dark/, "the existing dark UI must remain the explicit default");
 assert.match(tokens, /:root\[data-theme="light"\]\s*\{[^}]*color-scheme:\s*light/, "light mode must be an explicit token override");
@@ -68,8 +77,9 @@ const { initializeTheme } = await import("../src/components/theme-toggle.js");
 
 function fixture(savedValue, { throwOnStorage = false } = {}) {
   const listeners = new Map();
-  const attributes = new Map([["aria-pressed", "false"]]);
+  const attributes = new Map();
   const toggle = {
+    title: "",
     addEventListener: (type, listener) => listeners.set(type, listener),
     setAttribute: (name, value) => attributes.set(name, String(value)),
     click: () => listeners.get("click")?.()
@@ -96,10 +106,12 @@ function fixture(savedValue, { throwOnStorage = false } = {}) {
 const firstVisit = fixture(null);
 initializeTheme({ document: firstVisit.document, storage: firstVisit.storage });
 assert.equal(firstVisit.document.documentElement.dataset.theme, "dark", "a first visit must retain the locked dark UI");
-assert.equal(firstVisit.attributes.get("aria-pressed"), "false");
+assert.equal(firstVisit.attributes.get("aria-label"), "Switch to light mode");
+assert.equal(firstVisit.toggle.title, "Switch to light mode");
 firstVisit.toggle.click();
 assert.equal(firstVisit.document.documentElement.dataset.theme, "light");
-assert.equal(firstVisit.attributes.get("aria-pressed"), "true");
+assert.equal(firstVisit.attributes.get("aria-label"), "Switch to dark mode");
+assert.equal(firstVisit.toggle.title, "Switch to dark mode");
 assert.equal(firstVisit.stored(), "light", "the explicit user choice must persist");
 assert.equal(firstVisit.meta.content, "#f4f7f9", "browser chrome must follow light mode");
 firstVisit.toggle.click();
@@ -109,6 +121,7 @@ assert.equal(firstVisit.stored(), "dark");
 const savedLight = fixture("light");
 initializeTheme({ document: savedLight.document, storage: savedLight.storage });
 assert.equal(savedLight.document.documentElement.dataset.theme, "light", "an exact saved light choice must restore");
+assert.equal(savedLight.attributes.get("aria-label"), "Switch to dark mode");
 
 const invalid = fixture("sepia");
 initializeTheme({ document: invalid.document, storage: invalid.storage });
@@ -118,6 +131,7 @@ const blocked = fixture(null, { throwOnStorage: true });
 assert.doesNotThrow(() => initializeTheme({ document: blocked.document, storage: blocked.storage }));
 blocked.toggle.click();
 assert.equal(blocked.document.documentElement.dataset.theme, "light", "blocked persistence must not block the current toggle interaction");
+assert.equal(blocked.attributes.get("aria-label"), "Switch to dark mode");
 
 const blockedGetter = fixture(null);
 const originalStorage = Object.getOwnPropertyDescriptor(globalThis, "localStorage");

@@ -26,8 +26,10 @@ export function initializeTheme(options = {}) {
 
   function applyTheme(theme, persist = false) {
     const next = theme === "light" ? "light" : "dark";
+    const actionLabel = next === "light" ? "Switch to dark mode" : "Switch to light mode";
     root.dataset.theme = next;
-    toggle.setAttribute("aria-pressed", String(next === "light"));
+    toggle.setAttribute("aria-label", actionLabel);
+    toggle.title = actionLabel;
     if (themeColor) themeColor.content = colors[next];
     if (!persist) return;
     try {
