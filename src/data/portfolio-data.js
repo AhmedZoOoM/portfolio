@@ -5,7 +5,7 @@ const sourceData = window.PORTFOLIO_DATA;
 export const portfolioData = {
   ...sourceData,
   site: {
-    heroMediaId: "16kl-TkbvU090UNE0v2GnmIBiq5-bbbEt",
+    heroMediaId: sourceData.heroMediaId,
     featuredMediaIds: sourceData.featuredMediaIds
   },
   projects: sourceData.projects.map((project) => ({
