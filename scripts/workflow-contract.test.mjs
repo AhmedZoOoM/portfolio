@@ -5,6 +5,7 @@ const workflow = readFileSync(".github/workflows/sync-drive-media.yml", "utf8");
 const deploy = readFileSync(".github/workflows/deploy-pages.yml", "utf8");
 const e2e = readFileSync("tests/portfolio.e2e.spec.mjs", "utf8");
 const audit = JSON.parse(readFileSync("data/drive-sync-audit.json", "utf8"));
+const isValidAuditMonth = (value) => value === null || /^\d{4}-(?:0[1-9]|1[0-2])$/.test(value);
 
 assert.match(workflow, /cron:\s*["']17 0 \* \* \*["']/, "Drive synchronization must run nightly away from the top of the hour");
 assert.match(workflow, /workflow_dispatch:/, "Drive synchronization must remain manually runnable");
@@ -26,6 +27,9 @@ assert.match(e2e, /window\.PORTFOLIO_DATA/, "E2E must compare rendered cards wit
 assert.match(e2e, /aria-pressed/, "E2E must exercise the categories rendered by the live site");
 assert.doesNotMatch(e2e, /\b(?:81|77|16kl-TkbvU090UNE0v2GnmIBiq5-bbbEt)\b/, "E2E must not hard-code current media counts or IDs");
 assert.doesNotMatch(e2e, /\b(?:commercial|television|podcast|social|showreel|making-of|stills)\b/i, "E2E must discover current categories instead of naming them");
-assert.equal(audit.lastHealthyMonth, null, "the first healthy automation run, not the feature commit, must establish the monthly audit");
+assert.equal(isValidAuditMonth(null), true, "the audit marker may be empty before its first healthy run");
+assert.equal(isValidAuditMonth("2026-08"), true, "the audit marker must remain valid after the workflow records a healthy month");
+assert.equal(isValidAuditMonth("August"), false, "invalid audit values must be rejected");
+assert.ok(isValidAuditMonth(audit.lastHealthyMonth), "the tracked audit marker must be empty or contain a valid completed UTC month");
 
 console.log("PASS nightly workflow and dynamic E2E contracts");
