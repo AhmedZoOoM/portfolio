@@ -64,6 +64,7 @@ export function renderArchive(projects, openMedia) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "filter";
+    button.dataset.category = category;
     button.textContent = labels[category] || category;
     button.setAttribute("aria-pressed", String(category === activeCategory));
     button.addEventListener("click", () => {

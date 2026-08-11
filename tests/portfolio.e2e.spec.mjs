@@ -1,0 +1,71 @@
+import { expect, test } from "@playwright/test";
+
+async function assertDynamicPortfolio(page) {
+  await page.goto("./", { waitUntil: "networkidle" });
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.locator(".play-mark, .hero-play")).toHaveCount(0);
+
+  const cards = page.locator("#portfolio-archive [data-media-id]");
+  const empty = page.locator("#portfolio-archive .archive-empty");
+  const manifest = await page.evaluate(() => {
+    const media = window.PORTFOLIO_DATA.projects.flatMap((project) => project.media);
+    return media.map((item) => ({ id: item.driveId, category: item.category }));
+  });
+  const total = manifest.length;
+  await expect(cards).toHaveCount(total);
+  if (total === 0) {
+    await expect(empty).toBeVisible();
+    await expect(page.locator("#media-count")).toContainText("0 / 0");
+    return;
+  }
+
+  const ids = await cards.evaluateAll((nodes) => nodes.map((node) => node.dataset.mediaId));
+  expect(new Set(ids).size).toBe(total);
+  expect(ids.toSorted()).toEqual(manifest.map((item) => item.id).toSorted());
+  const categories = manifest.map((item) => item.category);
+  const filters = page.locator("#filters button[aria-pressed]");
+  expect(await filters.count()).toBeGreaterThan(0);
+  for (const filter of await filters.all()) {
+    const category = await filter.getAttribute("data-category");
+    const expected = category === "all" ? total : categories.filter((value) => value === category).length;
+    await filter.click();
+    await expect(page.locator("#media-count")).toContainText(`${expected} / ${total}`);
+  }
+
+  const videoCard = page.locator('#portfolio-archive [data-kind="video"]').first();
+  if (await videoCard.count()) {
+    const category = await videoCard.getAttribute("data-category");
+    await page.locator(`#filters button[data-category="${category}"]`).click();
+    await videoCard.locator(".media-open").click();
+    const dialog = page.locator("#media-dialog");
+    await expect(dialog).toBeVisible();
+    await expect(dialog.locator("iframe")).toHaveCount(1);
+    await expect(dialog.locator("video, .media-player-actions, .play-mark")).toHaveCount(0);
+    await page.getByRole("button", { name: "Close media viewer" }).click();
+    await expect(dialog).not.toBeVisible();
+  }
+
+  const imageCard = page.locator('#portfolio-archive [data-kind="image"]').first();
+  if (await imageCard.count()) {
+    const category = await imageCard.getAttribute("data-category");
+    await page.locator(`#filters button[data-category="${category}"]`).click();
+    await imageCard.locator(".media-open").click();
+    const dialog = page.locator("#media-dialog");
+    await expect(dialog.locator("iframe")).toHaveCount(0);
+    await expect(dialog.locator("img")).toHaveCount(1);
+    await page.getByRole("button", { name: "Close media viewer" }).click();
+  }
+}
+
+test("deployed portfolio derives archive, filters, and player from live media", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await assertDynamicPortfolio(page);
+});
+
+test("deployed portfolio remains usable on a phone viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await assertDynamicPortfolio(page);
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+  await expect(page.getByRole("link", { name: "Discuss a project" })).toBeVisible();
+});

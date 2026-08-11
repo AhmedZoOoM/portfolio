@@ -9,6 +9,7 @@ export function createMediaCard(item, openMedia, { featured = false } = {}) {
   const card = make("article", `media-card${featured ? " media-card-featured" : ""}`);
   card.dataset.mediaId = item.driveId;
   card.dataset.category = item.category;
+  card.dataset.kind = item.kind;
   card.dataset.variantGroup = item.variantGroup || "";
   card.dataset.aspect = item.aspect;
 
