@@ -75,15 +75,23 @@ test("deployed portfolio derives archive, filters, and player from live media", 
 test("deployed portfolio keeps dark mode by default and persists an explicit light choice", async ({ page }) => {
   await page.goto("./", { waitUntil: "networkidle" });
   const root = page.locator("html");
-  const toggle = page.getByRole("button", { name: "Light mode" });
+  const toggle = page.getByRole("button", { name: "Switch to light mode" });
   await expect(root).toHaveAttribute("data-theme", "dark");
   await expect(toggle).toBeEnabled();
-  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  await expect(toggle).toHaveAttribute("title", "Switch to light mode");
+  await expect(toggle.locator(".theme-toggle-icon--sun")).toBeVisible();
+  await expect(toggle.locator(".theme-toggle-icon--moon")).toBeHidden();
   await toggle.click();
+  const darkToggle = page.getByRole("button", { name: "Switch to dark mode" });
   await expect(root).toHaveAttribute("data-theme", "light");
-  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(darkToggle).toHaveAttribute("title", "Switch to dark mode");
+  await expect(darkToggle.locator(".theme-toggle-icon--sun")).toBeHidden();
+  await expect(darkToggle.locator(".theme-toggle-icon--moon")).toBeVisible();
+  await expect(darkToggle).toHaveCSS("width", "44px");
+  await expect(darkToggle).toHaveCSS("height", "44px");
   await page.reload({ waitUntil: "networkidle" });
   await expect(root).toHaveAttribute("data-theme", "light");
+  await expect(page.getByRole("button", { name: "Switch to dark mode" })).toBeVisible();
 });
 
 test("deployed portfolio remains usable on a phone viewport", async ({ page }) => {
