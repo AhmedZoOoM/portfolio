@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const FOLDER_MIME = "application/vnd.google-apps.folder";
 const SUPPORTED_MIME = /^(?:video|image)\//;
@@ -231,7 +231,16 @@ async function main() {
   }
 }
 
-if (process.argv[1] && fileURLToPath(import.meta.url) === fileURLToPath(new URL(`file:///${process.argv[1].replace(/\\/g, "/")}`))) {
+export function isExecutedDirectly(argvPath = process.argv[1]) {
+  if (!argvPath) return false;
+  try {
+    return import.meta.url === pathToFileURL(argvPath).href;
+  } catch {
+    return false;
+  }
+}
+
+if (isExecutedDirectly()) {
   main().catch((error) => {
     console.error(error.message);
     process.exitCode = 1;

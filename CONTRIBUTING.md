@@ -19,7 +19,7 @@ flowchart LR
 3. Preserve exact equality between current supported Drive IDs, inventory IDs, manifest IDs, and rendered archive IDs.
 4. Run `npm run check`; run `npm run verify` before merging changes that touch content or media URLs.
 5. Confirm keyboard operation, dialog focus return, reduced-motion behavior, and mobile layout in a browser.
-6. Merge through a pull request. The Pages workflow deploys `main`.
+6. Merge through a pull request. After merge, run **Update & publish portfolio** (or **Deploy GitHub Pages**) if the change was UI-only; media syncs publish automatically via that workflow.
 
 ## Visual-system rules
 
@@ -41,4 +41,4 @@ npm run verify
 
 ## Deployment
 
-GitHub Pages is deployed from `.github/workflows/deploy-pages.yml`. Nightly media reconciliation is owned by `.github/workflows/sync-drive-media.yml`, which opens and merges a scoped generated-data PR before calling the reusable Pages workflow. The `vite.config.js` `base` value must remain `/portfolio/` unless the Pages URL itself is intentionally changed. Deployment uploads the immutable `dist/` build artifact and finishes with live Playwright acceptance.
+GitHub Pages is deployed from `.github/workflows/deploy-pages.yml`. Media reconciliation and publish are owned by `.github/workflows/update-portfolio.yml` (nightly + manual). It opens and merges a scoped generated-data PR when needed, then calls the reusable Pages workflow. Manual runs default to force publish so one click still redeploys when Drive did not change. The `vite.config.js` `base` value must remain `/portfolio/` unless the Pages URL itself is intentionally changed. Deployment uploads the immutable `dist/` build artifact and finishes with live Playwright acceptance.

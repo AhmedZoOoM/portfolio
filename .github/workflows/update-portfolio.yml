@@ -1,9 +1,14 @@
-name: Sync Google Drive media
+name: Update & publish portfolio
 
 on:
   schedule:
     - cron: "17 0 * * *"
   workflow_dispatch:
+    inputs:
+      force_publish:
+        description: Publish GitHub Pages even when Drive media did not change
+        type: boolean
+        default: true
 
 concurrency:
   group: drive-media-sync
@@ -77,9 +82,21 @@ jobs:
           echo "Timed out waiting for the generated PR mergeCommit to reach origin/main" >&2
           exit 1
 
+  # Publish path owned by this workflow:
+  # - Media changed: call deploy after merge is on main (do not rely on a second push-triggered run).
+  # - Media unchanged + manual force_publish: still publish so one Actions click refreshes the live site.
   deploy:
     needs: sync
-    if: needs.sync.outputs.changed == 'true'
+    if: |
+      always() &&
+      needs.sync.result == 'success' &&
+      (
+        needs.sync.outputs.changed == 'true' ||
+        (
+          github.event_name == 'workflow_dispatch' &&
+          inputs.force_publish
+        )
+      )
     permissions:
       contents: read
       pages: write

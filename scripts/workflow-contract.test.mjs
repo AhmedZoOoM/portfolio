@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 
-const workflow = readFileSync(".github/workflows/sync-drive-media.yml", "utf8");
+const workflow = readFileSync(".github/workflows/update-portfolio.yml", "utf8");
 const deploy = readFileSync(".github/workflows/deploy-pages.yml", "utf8");
 const e2e = readFileSync("tests/portfolio.e2e.spec.mjs", "utf8");
 const audit = JSON.parse(readFileSync("data/drive-sync-audit.json", "utf8"));
@@ -16,7 +16,13 @@ const expectedActionVersions = new Map([
 ]);
 const actionCounts = new Map([...expectedActionVersions.keys()].map((action) => [action, 0]));
 
-for (const filename of readdirSync(".github/workflows").filter((name) => /\.ya?ml$/.test(name))) {
+const workflowFiles = readdirSync(".github/workflows").filter((name) => /\.ya?ml$/.test(name));
+assert.ok(workflowFiles.includes("update-portfolio.yml"), "the unified update & publish workflow must exist");
+assert.ok(!workflowFiles.includes("sync-drive-media.yml"), "the legacy sync-drive-media workflow must be removed");
+assert.ok(workflowFiles.includes("deploy-pages.yml"), "Pages deploy must remain as a reusable workflow");
+assert.ok(workflowFiles.includes("quality.yml"), "PR quality gate must remain");
+
+for (const filename of workflowFiles) {
   const contents = readFileSync(`.github/workflows/${filename}`, "utf8");
   for (const match of contents.matchAll(/^\s*(?:-\s+)?uses:\s*["']?actions\/(checkout|setup-node|configure-pages|deploy-pages|upload-artifact|upload-pages-artifact)@(v\d+)["']?\s*(?:#.*)?$/gm)) {
     const [, action, version] = match;
@@ -31,6 +37,7 @@ for (const [action, expectation] of expectedActionVersions) {
 
 assert.match(workflow, /cron:\s*["']17 0 \* \* \*["']/, "Drive synchronization must run nightly away from the top of the hour");
 assert.match(workflow, /workflow_dispatch:/, "Drive synchronization must remain manually runnable");
+assert.match(workflow, /force_publish:/, "manual runs must offer a force-publish input for one-click republish");
 assert.match(workflow, /GOOGLE_DRIVE_API_KEY:\s*\$\{\{\s*secrets\.GOOGLE_DRIVE_API_KEY\s*\}\}/, "the API key must come only from Actions secrets");
 assert.match(workflow, /contents:\s*write/, "the sync job needs scoped content write permission");
 assert.match(workflow, /pull-requests:\s*write/, "the sync job needs scoped pull-request permission");
@@ -40,8 +47,10 @@ assert.match(workflow, /gh pr merge[\s\S]*MERGED[\s\S]*mergeCommit[\s\S]*origin\
 assert.match(workflow, /drive-sync-audit\.json/, "a monthly healthy run must leave a reviewable audit PR");
 assert.match(workflow, /Nightly Drive sync failed/, "failures must be tracked by one named issue");
 assert.match(workflow, /gh issue list[\s\S]*gh issue comment/, "failure reporting must update an existing issue instead of creating duplicates");
-assert.match(workflow, /uses:\s*\.\/\.github\/workflows\/deploy-pages\.yml/, "the sync workflow must deploy the merged main branch");
-assert.match(deploy, /workflow_call:/, "the Pages workflow must be reusable from the sync workflow");
+assert.match(workflow, /uses:\s*\.\/\.github\/workflows\/deploy-pages\.yml/, "the update workflow must deploy via the reusable Pages workflow");
+assert.match(workflow, /force_publish/, "unchanged Drive trees must still be publishable on demand");
+assert.match(deploy, /workflow_call:/, "the Pages workflow must be reusable from the update workflow");
+assert.doesNotMatch(deploy, /^\s*push:\s*$/m, "Pages must not also auto-deploy on every main push (avoids double deploy with the update workflow)");
 assert.match(deploy, /ref:\s*main/, "deployment must check out merged main, not the pre-merge scheduler SHA");
 assert.match(deploy, /npm run test:e2e/, "deployment must finish with browser acceptance against its final URL");
 assert.match(e2e, /data-media-id/, "E2E must derive assertions from rendered media cards");
@@ -54,4 +63,4 @@ assert.equal(isValidAuditMonth("2026-08"), true, "the audit marker must remain v
 assert.equal(isValidAuditMonth("August"), false, "invalid audit values must be rejected");
 assert.ok(isValidAuditMonth(audit.lastHealthyMonth), "the tracked audit marker must be empty or contain a valid completed UTC month");
 
-console.log("PASS nightly workflow and dynamic E2E contracts");
+console.log("PASS unified update & publish workflow and dynamic E2E contracts");
