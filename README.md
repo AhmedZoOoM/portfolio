@@ -61,9 +61,9 @@ Category ownership lives in [`data/portfolio-config.json`](data/portfolio-config
 
 Folder aliases cover the bilingual names currently used in Drive. Add an alias or mapping in configuration when a source folder is renamed; do not patch generated files by hand.
 
-## Nightly automation
+## Nightly and on-demand update
 
-[`sync-drive-media.yml`](.github/workflows/sync-drive-media.yml) runs every night at **00:17 UTC** and can also be started manually.
+[`update-portfolio.yml`](.github/workflows/update-portfolio.yml) is the single media→publish pipeline. It runs every night at **00:17 UTC** and on demand from **Actions → Update & publish portfolio → Run workflow** (force publish defaults on so one click still refreshes the live site when Drive did not change).
 
 ```mermaid
 sequenceDiagram
@@ -83,7 +83,8 @@ sequenceDiagram
     Main->>Pages: Build and deploy merged revision
     Pages-->>Schedule: Run live manifest/UI/player E2E
   else No change
-    Schedule-->>Schedule: Finish without a no-op PR
+    Note over Schedule,Pages: Manual force_publish still deploys Pages
+    Schedule-->>Schedule: Finish without a no-op PR on schedule; publish on demand when requested
   end
 ```
 
@@ -116,8 +117,8 @@ sequenceDiagram
 | `tests/portfolio.e2e.spec.mjs` | Desktop/mobile production acceptance derived from the deployed manifest. |
 | `playwright.config.mjs` | Playwright browser, retry, trace, and local-preview configuration. |
 | `.github/workflows/quality.yml` | Pull-request and `main` quality gate. |
-| `.github/workflows/deploy-pages.yml` | Reusable Pages build, deploy, provider check, and final E2E workflow. |
-| `.github/workflows/sync-drive-media.yml` | Nightly Drive reconciliation, PR merge, audit, deployment, and failure tracking. |
+| `.github/workflows/deploy-pages.yml` | Reusable Pages build, deploy, provider check, and final E2E workflow (called by Update & publish; also manual). |
+| `.github/workflows/update-portfolio.yml` | Nightly and on-demand Drive reconciliation, PR merge, audit, Pages publish, and failure tracking. |
 | `public/` | Favicon, social preview artwork, sitemap, and robots policy copied into the build. |
 | `docs/images/` | Screenshots captured from the deployed production site for this README. |
 | `vite.config.js` | Vite configuration, including the `/portfolio/` GitHub Pages base path. |
@@ -166,7 +167,7 @@ npm run test:e2e
 
 1. Add, rename, move, or delete media in the public source Drive folder.
 2. Update `data/portfolio-config.json` only if taxonomy, aliases, featured policy, profile facts, or social links changed.
-3. Run the sync locally with the restricted API key, or dispatch **Sync Google Drive media** in Actions.
+3. Run the sync locally with the restricted API key, or dispatch **Update & publish portfolio** in Actions.
 4. Review the generated PR. Never hand-edit `drive-inventory.json` or `portfolio-data.js`.
 
 ### UI work
@@ -175,7 +176,9 @@ Start from the rendered flow, change the owning module under `src/`, and keep na
 
 ## Deployment and acceptance
 
-Merging to `main` runs the reusable Pages workflow:
+Running **Update & publish portfolio** (nightly or Actions → Run workflow) syncs Drive when needed and runs the reusable Pages workflow. For a UI-only merge with no media change, dispatch **Update & publish portfolio** with force publish, or run **Deploy GitHub Pages** manually:
+
+The Pages job:
 
 1. install locked dependencies;
 2. run all local checks and provider verification;
