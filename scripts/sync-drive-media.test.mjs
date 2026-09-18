@@ -3,10 +3,12 @@ import { readFile } from "node:fs/promises";
 
 import {
   buildPortfolioData,
+  isExecutedDirectly,
   scanDriveTree,
   serializePortfolioModule,
   verifyPublicMedia
 } from "./sync-drive-media.mjs";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const folderMime = "application/vnd.google-apps.folder";
 
@@ -143,3 +145,14 @@ const synchronizerSource = await readFile(new URL("./sync-drive-media.mjs", impo
 assert.doesNotMatch(synchronizerSource, /localeCompare/, "generated order must not depend on the runner locale");
 
 console.log("PASS recursive Drive synchronization and taxonomy");
+
+{
+  const modulePath = fileURLToPath(new URL("./sync-drive-media.mjs", import.meta.url));
+  assert.equal(isExecutedDirectly(modulePath), true, "pathToFileURL must match import.meta.url for the module on Linux");
+  const absoluteLinux = "/home/runner/work/portfolio/portfolio/scripts/sync-drive-media.mjs";
+  const legacyJoined = fileURLToPath(new URL(`file:///${absoluteLinux}`));
+  assert.notEqual(legacyJoined, absoluteLinux, "file:/// + absolute path must not be treated as equivalent on Linux");
+  assert.equal(pathToFileURL(absoluteLinux).pathname, absoluteLinux);
+  console.log("PASS Linux Actions entrypoint detection");
+}
+
