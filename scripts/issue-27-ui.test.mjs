@@ -36,7 +36,15 @@ assert.match(
   /\.media-card\[data-aspect="square"\]\s+\.media-visual\s+img\s*\{[^}]*aspect-ratio:\s*1\s*\/\s*1/,
   "square thumbnails must use their manifest aspect ratio"
 );
-assert.doesNotMatch(layout, /featured-grid[^}]*data-aspect="portrait"/, "selected portrait thumbnails must not be cropped into a featured-card ratio");
+// Issue 39 narrowed this guard from "no featured portrait rule" to "no featured portrait crop".
+const featuredPortraitRules = [...layout.matchAll(/([^{}]*featured-grid[^{}]*data-aspect="portrait"[^{}]*)\{([^}]*)\}/g)];
+for (const [, selector, body] of featuredPortraitRules) {
+  assert.doesNotMatch(body, /object-fit:\s*(?!contain)/, "selected portrait cards must never crop the poster (object-fit other than contain)");
+  assert.doesNotMatch(body, /clip-path|transform:\s*scale/, "selected portrait cards must not clip or zoom the poster");
+  if (/\bimg\b/.test(selector)) {
+    assert.doesNotMatch(body, /aspect-ratio|max-width|max-height/, "the selected portrait poster itself must keep its 9:16 manifest ratio (only its frame may pillarbox it)");
+  }
+}
 assert.doesNotMatch(responsive, /data-aspect="portrait"/, "phone layouts must preserve portrait media's 9:16 ratio");
 
 const themeToggleMarkup = html.match(/<button id="theme-toggle"[\s\S]*?<\/button>/)?.[0] || "";

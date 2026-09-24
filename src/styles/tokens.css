@@ -15,8 +15,22 @@
   --sans: Archivo, "Arial Narrow", Arial, sans-serif;
   --arabic: "Noto Sans Arabic", Tahoma, sans-serif;
   --mono: "SFMono-Regular", Consolas, monospace;
-  --container: min(1280px, calc(100% - 2rem));
+  --line-strong: #52657a;
+  --container: min(80rem, calc(100% - 2rem));
+  --header-height: 4.25rem;
+  --space-section: clamp(3.5rem, 6.5vw, 6.5rem);
+  --space-tight: clamp(2rem, 3.5vw, 3.5rem);
+  --gap-grid: clamp(.75rem, 1.2vw, 1.25rem);
+  --measure: 62ch;
+  --nav-size: 1.0625rem;
 }
+
+/* Large and high-density desktop canvases (editor/design monitors): widen the
+   layout and scale the root size in % so user zoom and font settings still apply. */
+@media (min-width: 1680px) { :root { --container: min(100rem, calc(100% - 6rem)); } }
+@media (min-width: 1920px) { html { font-size: 112.5%; } }
+@media (min-width: 2400px) { html { font-size: 125%; } }
+@media (min-width: 3200px) { html { font-size: 150%; } }
 
 :root[data-theme="light"] {
   color-scheme: light;
@@ -31,4 +45,5 @@
   --focus: #005f87;
   --header: rgb(244 247 249 / .92);
   --accent-contrast: #ffffff;
+  --line-strong: #6b7f8f;
 }

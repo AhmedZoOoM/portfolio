@@ -1,13 +1,13 @@
 * { box-sizing: border-box; }
-html { background: var(--canvas); scroll-behavior: smooth; }
-body { margin: 0; background: var(--canvas); color: var(--text); font: 16px/1.55 var(--sans); }
+html { background: var(--canvas); scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 1rem); }
+body { margin: 0; background: var(--canvas); color: var(--text); font: 1rem/1.55 var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 button, a { min-height: 44px; font: inherit; }
 a { color: inherit; }
 button { color: inherit; }
 h1, h2, h3, p { margin-top: 0; }
 h1 { font-size: clamp(3.3rem, 8vw, 7.5rem); line-height: .88; letter-spacing: -.07em; margin-bottom: 1.5rem; }
 h2 { font-size: clamp(2rem, 4.2vw, 4rem); line-height: .98; letter-spacing: -.05em; }
-img { max-width: 100%; }
+img { max-width: 100%; height: auto; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 .skip-link { position: fixed; z-index: 20; left: 1rem; top: 1rem; padding: .7rem 1rem; background: var(--text); color: var(--canvas); transform: translateY(-200%); }
 .skip-link:focus { transform: translateY(0); }
