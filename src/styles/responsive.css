@@ -16,6 +16,11 @@
   .section { scroll-margin-top: 12rem; }
   .section-heading { display: block; }
   .featured-grid, .media-grid { grid-template-columns: 1fr; }
-  .featured-grid .media-card:first-child { grid-column: auto; }
+  .featured-grid .media-card:first-child { grid-column: auto; grid-row: auto; }
+  .nav-links { justify-content: space-between; gap: 0; }
+  .nav-links a { --link-pad-x: .6rem; font-size: 1rem; }
   .timeline-track { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 380px) {
+  .nav-links a { --link-pad-x: .45rem; font-size: .95rem; }
 }

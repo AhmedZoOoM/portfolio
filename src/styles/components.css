@@ -10,15 +10,17 @@
 .media-card[data-aspect="square"] .media-visual-fallback { aspect-ratio: 1 / 1; }
 .media-fallback { max-width: 14rem; padding: 1rem; color: var(--text-muted); font: .72rem/1.5 var(--mono); text-align: center; text-transform: uppercase; letter-spacing: .08em; }
 .card-copy { display: grid; gap: .25rem; padding: 1rem; }
-.card-title { font-size: 1.05rem; line-height: 1.25; }
+.card-title { font-size: 1.05rem; line-height: 1.3; }
 .card-links { padding: 0 1rem 1rem; }
 .source-link { color: var(--accent); font-size: .85rem; }
-.filter { border: 1px solid var(--line); background: transparent; padding: .6rem .8rem; color: var(--text); cursor: pointer; }
+.filter { border: 1px solid var(--line-strong); background: transparent; padding: .6rem .9rem; color: var(--text); cursor: pointer; transition: border-color .18s ease, background-color .18s ease; }
+.filter:hover { border-color: var(--accent); }
 .filter[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--text); }
 .archive-groups { display: grid; gap: .8rem; margin-top: 2rem; }
 .archive-empty { grid-column: 1 / -1; margin: 0; border: 1px dashed var(--line); padding: 1.25rem; color: var(--text-muted); }
 .project-drawer { border: 1px solid var(--line); background: var(--panel); }
 .project-drawer[open] { border-color: var(--accent); }
+.project-drawer summary:hover { background: var(--panel-raised); }
 .project-drawer summary { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; padding: 1rem; cursor: pointer; list-style: none; }
 .project-drawer summary::-webkit-details-marker { display: none; }
 .project-drawer summary::after { content: "+"; grid-column: 2; grid-row: 1 / span 2; color: var(--accent); font: 2rem/.9 var(--mono); }
@@ -31,7 +33,7 @@
 .plain-list + .plain-list { margin-top: 1.5rem; }
 .plain-list li { margin-bottom: .7rem; }
 .social-links { display: flex; gap: .6rem; margin-top: 1.5rem; }
-.social-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); color: var(--text); }
+.social-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line-strong); color: var(--text); }
 .social-icon:hover { border-color: var(--accent); color: var(--accent); }
 .social-icon svg { width: 21px; height: 21px; fill: currentColor; }
 dialog { width: min(1050px, calc(100vw - 1rem)); max-width: calc(100vw - 1rem); max-height: calc(100dvh - 1rem); padding: 0; overflow: hidden; color: var(--text); background: var(--panel); border: 1px solid var(--line); }

@@ -6,6 +6,7 @@ import { createMediaCard } from "./components/media-card.js";
 import { createMediaDialog } from "./components/media-dialog.js";
 import { renderSocialLinks } from "./components/social-links.js";
 import { initializeTheme } from "./components/theme-toggle.js";
+import { initializeNavSpy } from "./components/nav-spy.js";
 
 initializeTheme();
 const openMedia = createMediaDialog();
@@ -76,5 +77,6 @@ renderSelectedWork();
 renderArchive(portfolioData.projects, openMedia);
 renderProfile();
 renderSocialLinks(portfolioData.socials);
+initializeNavSpy();
 window.addEventListener("load", alignHashAnchor, { once: true });
 window.addEventListener("hashchange", alignHashAnchor);
